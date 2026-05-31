@@ -147,7 +147,7 @@
 html {
   scroll-behavior: smooth;
   text-size-adjust: 100%;
-  overflow-x: clip;
+  overflow-x: hidden;
 }
 
 body {
@@ -161,6 +161,19 @@ body {
 
 body.overflow-hidden {
   overflow: hidden;
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 767px) {
+  [data-aos],
+  [data-aos].aos-animate {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }
 
 a {
