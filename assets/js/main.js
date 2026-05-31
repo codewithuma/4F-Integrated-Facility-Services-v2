@@ -376,7 +376,9 @@ document.addEventListener('DOMContentLoaded', async () => {
         backdrop.setAttribute('aria-hidden', 'true');
         toggleBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('overflow-hidden');
-        window.scrollTo(0, window.scrollY);
+        const scrollingElement = document.scrollingElement || document.documentElement;
+        scrollingElement.scrollLeft = 0;
+        document.body.scrollLeft = 0;
 
         if (returnFocus && previouslyFocusedElement) {
           previouslyFocusedElement.focus();
