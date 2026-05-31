@@ -42,17 +42,17 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   <div class="header-actions" id="header-actions-block">
     <a href="contact.html" class="btn btn-primary btn-sm" id="btn-header-contact">Contact Us</a>
-    <button class="nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation menu" aria-controls="site-mobile-nav">
+    <button class="nav-toggle" id="mobile-nav-toggle" aria-label="Open navigation menu" aria-controls="mobile-nav-menu" aria-expanded="false">
       <i class="fa-solid fa-bars" id="icon-mobile-toggle"></i>
     </button>
   </div>
 </div>`,
 
       'components/mobile-nav.html': `<!-- Offcanvas mobile navigation backdrop overlay -->
-<div class="offcanvas-backdrop" id="mobile-nav-backdrop"></div>
+<div class="offcanvas-backdrop" id="mobile-nav-backdrop" aria-hidden="true"></div>
 
 <!-- Offcanvas mobile navigation panel drawer -->
-<div class="offcanvas-menu" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu">
+<div class="offcanvas-menu" id="mobile-nav-menu" role="dialog" aria-modal="true" aria-label="Mobile Navigation Menu" aria-hidden="true">
   <div class="offcanvas-header" id="mobile-nav-header-block">
     <a class="logo" href="index.html" id="mobile-logo-link">
       <div class="logo-icon" id="mobile-logo-icon">4F</div>
@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         <a href="mailto:hello@4fservices.in" id="link-mobile-email-send">hello@4fservices.in</a>
       </div>
       <div class="offcanvas-actions" id="mobile-nav-actions-block">
-        <a href="contact.html" class="btn btn-primary" id="btn-mobile-contact">Get a Quote</a>
+        <a href="contact.html" class="btn btn-primary" id="btn-mobile-contact">Contact Us</a>
       </div>
     </div>
   </div>
@@ -352,21 +352,55 @@ document.addEventListener('DOMContentLoaded', async () => {
     const drawer = document.querySelector('#mobile-nav-menu');
 
     if (toggleBtn && drawer && backdrop) {
+      let previouslyFocusedElement = null;
+
       const openDrawer = () => {
+        previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         drawer.classList.add('active');
         backdrop.classList.add('active');
+        drawer.setAttribute('aria-hidden', 'false');
+        backdrop.setAttribute('aria-hidden', 'false');
+        toggleBtn.setAttribute('aria-expanded', 'true');
         document.body.classList.add('overflow-hidden');
+
+        const firstFocusable = drawer.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
+        window.setTimeout(() => {
+          (closeBtn || firstFocusable)?.focus();
+        }, 0);
       };
 
-      const closeDrawer = () => {
+      const closeDrawer = (returnFocus = true) => {
         drawer.classList.remove('active');
         backdrop.classList.remove('active');
+        drawer.setAttribute('aria-hidden', 'true');
+        backdrop.setAttribute('aria-hidden', 'true');
+        toggleBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('overflow-hidden');
+
+        if (returnFocus && previouslyFocusedElement) {
+          previouslyFocusedElement.focus();
+        }
       };
 
-      toggleBtn.addEventListener('click', openDrawer);
-      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-      backdrop.addEventListener('click', closeDrawer);
+      toggleBtn.addEventListener('click', () => {
+        if (drawer.classList.contains('active')) {
+          closeDrawer();
+        } else {
+          openDrawer();
+        }
+      });
+      if (closeBtn) closeBtn.addEventListener('click', () => closeDrawer());
+      backdrop.addEventListener('click', () => closeDrawer());
+
+      drawer.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => closeDrawer(false));
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && drawer.classList.contains('active')) {
+          closeDrawer();
+        }
+      });
     }
 
     // Collapsible submenus toggler inside mobile menu

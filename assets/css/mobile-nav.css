@@ -24,21 +24,24 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 100%;
-  max-width: 320px;
+  width: 100vw;
+  max-width: none;
   height: 100vh;
+  min-height: 100dvh;
   background-color: var(--color-bg-card);
-  border-left: 1px solid var(--color-border);
   z-index: 2000;
   box-shadow: var(--shadow-xl);
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
   transform: translateX(100%);
-  transition: transform var(--transition-normal) cubic-bezier(0.16, 1, 0.32, 1);
+  visibility: hidden;
+  transition: transform var(--transition-normal) cubic-bezier(0.16, 1, 0.32, 1), visibility var(--transition-normal);
 }
 
 .offcanvas-menu.active {
   transform: translateX(0);
+  visibility: visible;
 }
 
 /* Drawer Header */

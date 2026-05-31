@@ -159,6 +159,10 @@
   gap: var(--space-sm);
 }
 
+.header #btn-header-contact {
+  display: none;
+}
+
 .header .nav-toggle {
   display: flex;
   align-items: center;
@@ -176,6 +180,10 @@
 }
 
 @media (min-width: 1024px) {
+  .header #btn-header-contact {
+    display: inline-flex;
+  }
+
   .header .nav-toggle {
     display: none;
   }
