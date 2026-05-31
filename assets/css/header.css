@@ -1,0 +1,182 @@
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: padding var(--transition-normal), background-color var(--transition-normal), border-color var(--transition-normal);
+}
+
+.header.sticky-scrolled {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: var(--shadow-sm);
+  border-bottom-color: var(--color-border);
+}
+
+.header .container {
+  display: flex;
+  height: 72px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand Identity */
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.header .logo-icon {
+  display: flex;
+  height: 40px;
+  width: 40px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: var(--color-text-light);
+  font-family: var(--font-family-headings);
+  font-weight: var(--weight-bold);
+  font-size: 1.15rem;
+  box-shadow: var(--shadow-md);
+}
+
+.header .logo-text {
+  line-height: var(--line-height-tight);
+}
+
+.header .logo-title {
+  font-family: var(--font-family-headings);
+  font-size: 1rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+}
+
+.header .logo-sub {
+  font-size: 9px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+
+/* Navigation Links */
+.header .nav-menu {
+  display: none;
+  align-items: center;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 1024px) {
+  .header .nav-menu {
+    display: flex;
+  }
+}
+
+.header .nav-link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-dark);
+  opacity: 0.8;
+  padding: var(--space-xxs) 0;
+  border-bottom: 2px solid transparent;
+}
+
+.header .nav-link:hover, .header .nav-link.active {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+/* Services Dropdown Selectors */
+.header .dropdown-container {
+  position: relative;
+}
+
+.header .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xxs);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-dark);
+  opacity: 0.8;
+  transition: opacity var(--transition-fast);
+}
+
+.header .dropdown-toggle:hover {
+  opacity: 1;
+  color: var(--color-accent);
+}
+
+.header .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 220px;
+  background-color: var(--color-bg-light);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-xs) 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), transform var(--transition-normal), visibility var(--transition-normal);
+  z-index: 1010;
+}
+
+.header .dropdown-container:hover .dropdown-menu,
+.header .dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.header .dropdown-item {
+  display: block;
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dark);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.header .dropdown-item:hover {
+  background-color: var(--color-emerald-light);
+  color: var(--color-emerald-dark);
+  font-weight: var(--weight-medium);
+}
+
+/* Header Action CTA and Hamburger menu */
+.header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header .nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  transition: background-color var(--transition-fast);
+}
+
+.header .nav-toggle:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 1024px) {
+  .header .nav-toggle {
+    display: none;
+  }
+}

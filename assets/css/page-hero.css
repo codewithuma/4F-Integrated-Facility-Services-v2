@@ -1,0 +1,195 @@
+.page-hero {
+  position: relative;
+  background: var(--gradient-hero);
+  color: var(--color-text-light);
+  overflow: hidden;
+  padding: var(--space-xl) 0 var(--space-xxl) 0;
+  display: flex;
+  align-items: center;
+  min-height: 280px;
+}
+
+@media (min-width: 1024px) {
+  .page-hero {
+    min-height: 380px;
+    padding: var(--space-xxl) 0;
+  }
+}
+
+.page-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-cover: cover;
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.page-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, var(--color-primary) 20%, rgba(var(--color-primary-rgb), 0.85) 60%, rgba(var(--color-primary-rgb), 0.4) 100%);
+  z-index: 2;
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+/* Back Link Option */
+.page-hero-back {
+  font-size: var(--font-size-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(248, 250, 252, 0.7);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-md);
+  transition: color var(--transition-fast);
+}
+
+.page-hero-back:hover {
+  color: var(--color-text-light);
+}
+
+/* Breadcrumbs Lists */
+.page-hero-breadcrumbs {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  font-size: var(--font-size-xs);
+  font-weight: var(--weight-medium);
+  color: rgba(248, 250, 252, 0.6);
+  margin-bottom: var(--space-sm);
+}
+
+.page-hero-breadcrumbs a {
+  color: rgba(248, 250, 252, 0.8);
+  transition: color var(--transition-fast);
+}
+
+.page-hero-breadcrumbs a:hover {
+  color: var(--color-text-light);
+}
+
+.page-hero-breadcrumbs span {
+  font-size: var(--font-size-xs);
+}
+
+/* Titles and subtitles */
+.page-hero-tag {
+  font-size: var(--font-size-xs);
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(248, 250, 252, 0.7);
+  margin-bottom: var(--space-xs);
+}
+
+.page-hero-title {
+  font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-light);
+  line-height: var(--line-height-tight);
+  letter-spacing: -0.03em;
+  max-width: 800px;
+}
+
+.page-hero-desc {
+  font-size: var(--font-size-base);
+  color: rgba(248, 250, 252, 0.85);
+  max-width: 600px;
+  margin-top: var(--space-md);
+  line-height: var(--line-height-relaxed);
+}
+
+@media (min-width: 1024px) {
+  .page-hero-desc {
+    font-size: var(--font-size-lg);
+  }
+}
+
+.page-hero-action {
+  margin-top: var(--space-lg);
+}
+
+/* Premium Flexbox Alignment and Blurred Icon Container */
+.page-hero-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+@media (min-width: 640px) {
+  .page-hero-body {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: var(--space-lg);
+  }
+}
+
+.page-hero-icon {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .page-hero-icon {
+    display: flex;
+    width: 64px;
+    height: 64px;
+    border-radius: var(--radius-md);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    align-items: center;
+    justify-content: center;
+    font-size: 1.75rem;
+    color: var(--color-text-light);
+    flex-shrink: 0;
+    margin-top: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.page-hero-text {
+  flex-grow: 1;
+  max-width: 800px;
+}
+
+/* High-Contrast Premium CTA Button in Dark Navy Context */
+.btn-hero-quote {
+  background-color: var(--color-text-light);
+  color: var(--color-primary);
+  box-shadow: 0 12px 32px rgba(8, 30, 68, 0.12); /* shadow-elevated */
+  border-radius: 9999px; /* Force pill shape matching Tailwind rounded-full exactly */
+  padding: 0.75rem 1.25rem; /* Standard px-5 py-3 padding matching Tailwind */
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-semibold);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.btn-hero-quote:hover {
+  transform: scale(1.02);
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 36px rgba(8, 30, 68, 0.16);
+  color: var(--color-primary);
+}
+
+.btn-hero-quote:active {
+  transform: scale(0.98);
+}

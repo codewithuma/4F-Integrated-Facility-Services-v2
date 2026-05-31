@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Reach out for fire safety, housekeeping, security, pest control, or full integrated facility management.">
+  <title>Contact Us — 4F Integrated Facility Services</title>
+  
+  <!-- Typography Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Animate On Scroll (AOS) -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  
+  <!-- Compiled Master Style Sheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body id="page-contact" data-is-subpage="false">
+  
+  <!-- Component Placeholders (Loaded dynamically by main.js) -->
+  <header class="header" id="site-header"></header>
+  <div id="site-mobile-nav"></div>
+
+  <!-- Main Content inside semantic main -->
+  <main class="flex-1" id="main-content">
+    
+    <!-- Contact Hero Section -->
+    <section class="page-hero dark-context" id="section-contact-hero">
+      <div class="page-hero-overlay" id="contact-hero-mask"></div>
+      
+      <div class="container" id="contact-hero-content-block">
+        <a class="page-hero-back" href="index.html" id="btn-hero-back-link">← Back to Home</a>
+        <div class="page-hero-body" id="contact-hero-body">
+          <div class="page-hero-text" id="contact-hero-text-block">
+            <div class="page-hero-tag" id="tag-contact-hero">Contact Us</div>
+            <h1 class="page-hero-title" data-aos="fade-up" id="heading-contact-hero">
+              Let Us Handle the Details
+            </h1>
+            <p class="page-hero-desc" data-aos="fade-up" data-aos-delay="100" id="desc-contact-hero">
+              Experience hassle-free facility management today. Reach out so you can focus on what matters most.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Form & Info Section -->
+    <section class="contact-section" id="section-contact-core">
+      <div class="container" id="contact-core-container-block">
+        <div class="contact-grid" id="contact-core-layout-grid">
+          
+          <!-- Left Column: Form -->
+          <div class="lg:col-span-2" id="block-contact-form-col">
+            <div class="contact-card" id="card-contact-form-wrapper">
+              <form class="contact-form" id="form-contact-inquiry" novalidate>
+                
+                <div class="form-group-row" id="form-row-personal">
+                  <div class="form-group" id="group-input-name">
+                    <label class="form-label" for="name">Full Name</label>
+                    <input id="name" name="name" type="text" maxlength="100" class="form-control" placeholder="Jane Doe" required>
+                  </div>
+                  <div class="form-group" id="group-input-company">
+                    <label class="form-label" for="company">Company Name</label>
+                    <input id="company" name="company" type="text" maxlength="120" class="form-control" placeholder="Acme Corp">
+                  </div>
+                </div>
+
+                <div class="form-group-row" id="form-row-contact">
+                  <div class="form-group" id="group-input-email">
+                    <label class="form-label" for="email">Email Address</label>
+                    <input id="email" name="email" type="email" maxlength="255" class="form-control" placeholder="you@company.com" required>
+                  </div>
+                  <div class="form-group" id="group-input-phone">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input id="phone" name="phone" type="tel" maxlength="20" class="form-control" placeholder="+91 00000 00000" required>
+                  </div>
+                </div>
+
+                <div class="form-group" id="group-input-category">
+                  <label class="form-label" for="category">Service Category</label>
+                  <select id="category" name="category" class="form-control" required>
+                    <option value="" disabled selected>Select a service…</option>
+                    <option value="Fire Services">Fire Services</option>
+                    <option value="Housekeeping">Housekeeping</option>
+                    <option value="Security">Security</option>
+                    <option value="Pest Control">Pest Control</option>
+                    <option value="Full Integrated Management">Full Integrated Management</option>
+                  </select>
+                </div>
+
+                <div class="form-group" id="group-input-message">
+                  <label class="form-label" for="message">Message / Requirements</label>
+                  <textarea id="message" name="message" rows="5" maxlength="1000" class="form-control" placeholder="Tell us about your facility and what you're looking for…" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" id="btn-submit-contact" style="width: auto; align-self: flex-start;">
+                  Send Message <i class="fa-solid fa-paper-plane" style="margin-left: var(--space-xxs); font-size: 11px;"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right Column: Sidebar Contacts -->
+          <div class="contact-sidebar" id="block-contact-sidebar-col">
+            
+            <div class="sidebar-card-accent" id="card-sidebar-accent-contacts">
+              <h3 id="title-sidebar-card-accent">Talk to us directly</h3>
+              <p id="desc-sidebar-card-accent">Prefer a conversation? Our team is reachable across channels.</p>
+              
+              <ul class="sidebar-contacts-list" id="sidebar-contacts-list-ul">
+                <li class="sidebar-contact-item" id="sidebar-item-phone">
+                  <div class="sidebar-contact-icon" id="icon-sidebar-phone"><i class="fa-solid fa-phone"></i></div>
+                  <div class="sidebar-contact-text" id="text-sidebar-phone-block">
+                    <div class="sidebar-contact-label" id="label-sidebar-phone">Phone</div>
+                    <div class="sidebar-contact-value" id="value-sidebar-phone"><a href="tel:+910000000000" style="color: white;">+91 00000 00000</a></div>
+                  </div>
+                </li>
+                <li class="sidebar-contact-item" id="sidebar-item-email">
+                  <div class="sidebar-contact-icon" id="icon-sidebar-email"><i class="fa-solid fa-envelope"></i></div>
+                  <div class="sidebar-contact-text" id="text-sidebar-email-block">
+                    <div class="sidebar-contact-label" id="label-sidebar-email">Email</div>
+                    <div class="sidebar-contact-value" id="value-sidebar-email"><a href="mailto:hello@4fservices.in" style="color: white;">hello@4fservices.in</a></div>
+                  </div>
+                </li>
+                <li class="sidebar-contact-item" id="sidebar-item-address">
+                  <div class="sidebar-contact-icon" id="icon-sidebar-address"><i class="fa-solid fa-map-pin"></i></div>
+                  <div class="sidebar-contact-text" id="text-sidebar-address-block">
+                    <div class="sidebar-contact-label" id="label-sidebar-address">Corporate Office</div>
+                    <div class="sidebar-contact-value" id="value-sidebar-address">4F Integrated HQ<br>India</div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <div class="sidebar-card-standard" id="card-sidebar-standard-response">
+              <h3 id="title-sidebar-standard-response">Response time</h3>
+              <p id="desc-sidebar-standard-response">
+                We typically respond within one business day. For urgent operational issues, please call us directly.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Component Placeholder (Loaded dynamically by main.js) -->
+  <footer class="footer" id="site-footer"></footer>
+
+  <!-- Floating WhatsApp Action Button -->
+  <a href="#" class="whatsapp-float" id="btn-whatsapp-floating" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg>
+  </a>
+
+  <!-- JavaScript CDNs -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Core JavaScript Logic -->
+  <script src="assets/js/main.js"></script>
+  <!-- Page Specific Logic -->
+  <script src="assets/js/contact.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+/* Offcanvas Drawer Overlay Backdrop */
+.offcanvas-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 15, 29, 0.4);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--transition-normal), visibility var(--transition-normal);
+}
+
+.offcanvas-backdrop.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Offcanvas Drawer Panel */
+.offcanvas-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 320px;
+  height: 100vh;
+  background-color: var(--color-bg-card);
+  border-left: 1px solid var(--color-border);
+  z-index: 2000;
+  box-shadow: var(--shadow-xl);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform var(--transition-normal) cubic-bezier(0.16, 1, 0.32, 1);
+}
+
+.offcanvas-menu.active {
+  transform: translateX(0);
+}
+
+/* Drawer Header */
+.offcanvas-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.offcanvas-menu .logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.offcanvas-menu .logo-icon {
+  display: flex;
+  height: 36px;
+  width: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  background: var(--color-primary);
+  color: var(--color-text-light);
+  font-family: var(--font-family-headings);
+  font-weight: var(--weight-bold);
+  font-size: 1rem;
+}
+
+.offcanvas-menu .logo-title {
+  font-family: var(--font-family-headings);
+  font-size: 0.95rem;
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+}
+
+.offcanvas-menu .logo-sub {
+  font-size: 8px;
+  font-weight: var(--weight-bold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+}
+
+.offcanvas-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+}
+
+.offcanvas-close:hover {
+  background-color: rgba(0, 0, 0, 0.03);
+  color: var(--color-primary);
+}
+
+/* Drawer Body (Navigation links) */
+.offcanvas-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offcanvas-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.offcanvas-link {
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  padding: var(--space-xxs) 0;
+  border-bottom: 1px solid transparent;
+}
+
+.offcanvas-link:hover, .offcanvas-link.active {
+  color: var(--color-accent);
+}
+
+/* Services mobile submenu */
+.offcanvas-submenu-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-align: left;
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-lg);
+  font-weight: var(--weight-semibold);
+  color: var(--color-primary);
+  padding: var(--space-xxs) 0;
+  cursor: pointer;
+}
+
+.offcanvas-submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--transition-normal) ease-out;
+  padding-left: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  border-left: 1px dashed var(--color-border);
+  margin-left: var(--space-xxs);
+}
+
+.offcanvas-submenu.active {
+  max-height: 350px;
+  margin-top: var(--space-xs);
+  margin-bottom: var(--space-xs);
+}
+
+.offcanvas-submenu-link {
+  font-size: var(--font-size-sm);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-muted);
+  padding: var(--space-xxs) 0;
+}
+
+.offcanvas-submenu-link:hover, .offcanvas-submenu-link.active {
+  color: var(--color-accent);
+}
+
+/* Drawer Footer Quick Contacts */
+.offcanvas-contacts {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-md);
+}
+
+.offcanvas-contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+}
+
+.offcanvas-contact-item i {
+  color: var(--color-emerald);
+}
+
+.offcanvas-actions {
+  margin-top: var(--space-md);
+}
+
+.offcanvas-actions .btn {
+  width: 100%;
+}

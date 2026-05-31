@@ -1,0 +1,110 @@
+/* About History & Mission Grid */
+.about-story-section {
+  background-color: var(--color-bg-card);
+  padding: var(--section-padding);
+}
+
+.about-story-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 1024px) {
+  .about-story-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xxl);
+  }
+}
+
+.about-story-col h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--space-md);
+}
+
+.about-story-col p {
+  margin-bottom: var(--space-sm);
+}
+
+/* About Leadership Spotlight */
+.about-leadership {
+  background-color: var(--color-bg-light);
+  padding: var(--section-padding);
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.leadership-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+}
+
+@media (min-width: 1024px) {
+  .leadership-grid {
+    grid-template-columns: 5fr 7fr;
+    align-items: center;
+    gap: var(--space-xxl);
+  }
+}
+
+.leadership-image-wrap {
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.leadership-image-wrap img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.leadership-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.leadership-details h2 {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-xxs);
+}
+
+.leadership-details .title {
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  font-weight: var(--weight-semibold);
+  margin-bottom: var(--space-lg);
+}
+
+.leadership-details i.quote-icon {
+  font-size: 2rem;
+  color: var(--color-emerald);
+  margin-bottom: var(--space-xs);
+}
+
+.leadership-details .quote-text {
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-xl);
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--color-primary);
+  margin-bottom: var(--space-md);
+}
+
+.leadership-details .desc-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text-muted);
+  line-height: var(--line-height-relaxed);
+}
+
+/* About Difference Section */
+.about-difference {
+  background-color: var(--color-bg-card);
+  padding: var(--section-padding);
+}
