@@ -8,71 +8,71 @@
 @import url("contact.css");
 
 :root {
-  /* 1. OKLCH Color Palette (Exact tokens from original Lovable application) */
+  /* 1. Hex Color Palette (Converted precisely from original OKLCH tokens) */
   --radius: 0.75rem;
-  --background: oklch(100% 0 0);
-  --foreground: oklch(18% 0.04 250);
-  --card: oklch(100% 0 0);
-  --card-foreground: oklch(18% 0.04 250);
-  --popover: oklch(100% 0 0);
-  --popover-foreground: oklch(18% 0.04 250);
+  --background: #ffffff;
+  --foreground: #031222;
+  --card: #ffffff;
+  --card-foreground: #031222;
+  --popover: #ffffff;
+  --popover-foreground: #031222;
   
-  --primary: oklch(24% 0.07 255);
-  --primary-foreground: oklch(98.5% 0.005 250);
-  --primary-glow: oklch(36% 0.1 258);
+  --primary: #041f3f;
+  --primary-foreground: #f8fafd;
+  --primary-glow: #173c70;
   
-  --secondary: oklch(55% 0.14 160);
-  --secondary-foreground: oklch(98.5% 0.005 250);
+  --secondary: #008954;
+  --secondary-foreground: #f8fafd;
   
-  --emerald: oklch(55% 0.14 160);
-  --emerald-soft: oklch(95% 0.04 160);
+  --emerald: #008954;
+  --emerald-soft: #d9f7e5;
   
-  --accent: oklch(70% 0.19 45);
-  --accent-foreground: oklch(98.5% 0.005 250);
+  --accent: #fa6e1d;
+  --accent-foreground: #f8fafd;
   
-  --muted: oklch(97% 0.005 250);
-  --muted-foreground: oklch(50% 0.02 255);
+  --muted: #f3f5f8;
+  --muted-foreground: #5c646f;
   
-  --destructive: oklch(60% 0.22 27);
-  --destructive-foreground: oklch(98.5% 0.005 250);
+  --destructive: #e62c2c;
+  --destructive-foreground: #f8fafd;
   
-  --border: oklch(92% 0.01 255);
-  --input: oklch(92% 0.01 255);
-  --ring: oklch(24% 0.07 255);
+  --border: #e0e5eb;
+  --input: #e0e5eb;
+  --ring: #041f3f;
 
   /* Original Gradients */
-  --gradient-hero: linear-gradient(135deg, oklch(20% 0.07 255) 0%, oklch(30% 0.09 258) 55%, oklch(42% 0.12 200) 100%);
-  --gradient-emerald: linear-gradient(135deg, oklch(50% 0.13 160), oklch(62% 0.14 165));
-  --gradient-soft: linear-gradient(180deg, oklch(99% 0.005 250), oklch(96% 0.01 250));
-  --gradient-accent: linear-gradient(135deg, oklch(70% 0.19 45), oklch(62% 0.22 30));
+  --gradient-hero: linear-gradient(135deg, #001535 0%, #0c2c5a 55%, #005f67 100%);
+  --gradient-emerald: linear-gradient(135deg, #007948, #00a071);
+  --gradient-soft: linear-gradient(180deg, #f9fcff, #edf2f8);
+  --gradient-accent: linear-gradient(135deg, #fa6e1d, #ed3726);
 
   /* Glows and Smooth Transitions */
-  --shadow-glow: 0 0 50px oklch(55% 0.14 160 / 0.2);
+  --shadow-glow: 0 0 50px rgba(0, 137, 84, 0.2);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* 2. Unified Semantic Color Mappings */
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-glow);
-  --color-primary-dark: oklch(18% 0.05 255);
-  --color-primary-rgb: 24, 37, 84;
+  --color-primary-dark: #021127;
+  --color-primary-rgb: 4, 31, 63;
   
   --color-accent: var(--primary); /* Buttons default to navy primary */
   --color-accent-hover: var(--primary-glow);
-  --color-accent-rgb: 41, 55, 107;
+  --color-accent-rgb: 4, 31, 63;
   
   --color-emerald: var(--emerald);
   --color-emerald-light: var(--emerald-soft);
-  --color-emerald-dark: oklch(45% 0.12 160);
+  --color-emerald-dark: #00683d;
   
   --color-bg-light: var(--background);
-  --color-bg-dark: oklch(16% 0.04 255);
+  --color-bg-dark: #030d1e;
   --color-bg-card: var(--card);
-  --color-bg-card-dark: oklch(16% 0.04 255);
+  --color-bg-card-dark: #030d1e;
   --color-text-dark: var(--foreground);
   --color-text-muted: var(--muted-foreground);
   --color-text-light: var(--primary-foreground);
   --color-border: var(--border);
-  --color-border-dark: oklch(30% 0.05 255);
+  --color-border-dark: #1c2f46;
   
   /* Glassmorphism Settings */
   --glass-bg: rgba(255, 255, 255, 0.75);
