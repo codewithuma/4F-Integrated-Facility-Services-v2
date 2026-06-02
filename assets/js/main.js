@@ -80,9 +80,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     applyActiveNavigation();
   };
 
-  /**
-   * Relative link prefix adjuster for subpages
-   */
   const resolveRelativeLinks = () => {
     const containers = document.querySelectorAll('#site-header, #site-mobile-nav, #site-footer');
     
@@ -96,30 +93,8 @@ document.addEventListener('DOMContentLoaded', async () => {
           return;
         }
 
-        // Adjust React/Lovable style absolute routing leads into local relative layouts
-        let adjustedHref = href;
-        if (href.startsWith('/')) {
-          if (href === '/') {
-            adjustedHref = './';
-          } else if (href.startsWith('/services/')) {
-            adjustedHref = 'services/' + href.substring(10) + '.html';
-          } else {
-            adjustedHref = href.substring(1) + '.html';
-          }
-        }
-
-        // Convert index.html or empty references to clean relative directory paths
-        if (adjustedHref === 'index.html' || adjustedHref === '') {
-          adjustedHref = './';
-        }
-
-        // Prepend prefix to adjust paths correctly
-        let finalHref = prefix + adjustedHref;
-        // Normalize .././ to ../
-        if (finalHref.startsWith('.././')) {
-          finalHref = '../' + finalHref.substring(5);
-        }
-        link.setAttribute('href', finalHref);
+        // Extremely simple: prepend the relative folder prefix ('../' for subpages, empty for root)
+        link.setAttribute('href', prefix + href);
       });
     });
   };
@@ -255,28 +230,22 @@ document.addEventListener('DOMContentLoaded', async () => {
       currentPage = 'index.html';
     }
     
-    // Select links in both header nav and offcanvas mobile menu
     const menuLinks = document.querySelectorAll('#nav-menu-desktop a, #mobile-nav-links-block a');
     
     menuLinks.forEach(link => {
       const href = link.getAttribute('href');
       if (!href) return;
 
-      let linkPage = href.substring(href.lastIndexOf('/') + 1);
-      // Strip hashes
+      let linkPage = href.substring(href.lastIndexOf('/') + 1) || 'index.html';
       if (linkPage.includes('#')) {
         linkPage = linkPage.substring(0, linkPage.indexOf('#'));
       }
-      
-      let isMatch = linkPage === currentPage;
-      
-      // Handle home/index routes matching roots
-      if ((currentPage === 'index.html' || currentPage === '') && (linkPage === '' || linkPage === '.' || linkPage === 'index.html')) {
-        isMatch = true;
+      if (linkPage === '' || linkPage === '.' || linkPage === './') {
+        linkPage = 'index.html';
       }
       
-      // Strict equality comparison for matching active routes
-      if (isMatch) {
+      // Toggle active CSS class if link page matches the current active route
+      if (linkPage === currentPage) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
