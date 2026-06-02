@@ -25,42 +25,30 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Load page hero component placeholder if it exists on page
     const pageHeroContainer = document.querySelector('#site-page-hero');
     const heroPromise = pageHeroContainer
-      ? (async () => {
-          await fetchAndInject('#site-page-hero', prefix + 'components/page-hero.html');
+      ? fetchAndInject('#site-page-hero', prefix + 'components/page-hero.html').then(() => {
+          const attr = (name) => pageHeroContainer.getAttribute(name) || '';
+          const setVal = (sel, val) => {
+            const el = pageHeroContainer.querySelector(sel);
+            if (el) el.textContent = val;
+          };
           
-          // Inject dynamic breadcrumbs and texts from attributes
-          const title = pageHeroContainer.getAttribute('data-title') || '';
-          const desc = pageHeroContainer.getAttribute('data-desc') || '';
-          const tag = pageHeroContainer.getAttribute('data-tag') || '';
-          const breadcrumb = pageHeroContainer.getAttribute('data-breadcrumb') || '';
-          const parentLink = pageHeroContainer.getAttribute('data-parent-link') || '';
-          const parentTitle = pageHeroContainer.getAttribute('data-parent-title') || '';
-
-          const heroTitle = pageHeroContainer.querySelector('#page-hero-heading-text');
-          if (heroTitle) heroTitle.textContent = title;
-
-          const heroDesc = pageHeroContainer.querySelector('#page-hero-desc-text');
-          if (heroDesc) heroDesc.textContent = desc;
-
-          const heroTag = pageHeroContainer.querySelector('#page-hero-tag-text');
-          if (heroTag) heroTag.textContent = tag;
+          setVal('#page-hero-heading-text', attr('data-title'));
+          setVal('#page-hero-desc-text', attr('data-desc'));
+          setVal('#page-hero-tag-text', attr('data-tag'));
 
           const breadcrumbsDiv = pageHeroContainer.querySelector('#page-hero-breadcrumbs-div');
           if (breadcrumbsDiv) {
-            let breadcrumbsHTML = `<a href="${prefix || './'}">Home</a> <span>/</span> `;
-            if (parentLink && parentTitle) {
-              breadcrumbsHTML += `<a href="${prefix}${parentLink}">${parentTitle}</a> <span>/</span> `;
+            let html = `<a href="${prefix || './'}">Home</a> <span>/</span> `;
+            if (attr('data-parent-link') && attr('data-parent-title')) {
+              html += `<a href="${prefix}${attr('data-parent-link')}">${attr('data-parent-title')}</a> <span>/</span> `;
             }
-            breadcrumbsHTML += `<span>${breadcrumb}</span>`;
-            breadcrumbsDiv.innerHTML = breadcrumbsHTML;
+            html += `<span>${attr('data-breadcrumb')}</span>`;
+            breadcrumbsDiv.innerHTML = html;
           }
 
-          // Adjust back button path
           const backBtn = pageHeroContainer.querySelector('#btn-hero-back-link');
-          if (backBtn) {
-            backBtn.setAttribute('href', prefix || './');
-          }
-        })()
+          if (backBtn) backBtn.setAttribute('href', prefix || './');
+        })
       : Promise.resolve();
 
     // Parallel fetch components
@@ -148,57 +136,26 @@ document.addEventListener('DOMContentLoaded', async () => {
     const drawer = document.querySelector('#mobile-nav-menu');
 
     if (toggleBtn && drawer && backdrop) {
-      let previouslyFocusedElement = null;
-
       const openDrawer = () => {
-        previouslyFocusedElement = document.activeElement instanceof HTMLElement ? document.activeElement : null;
         drawer.classList.add('active');
         backdrop.classList.add('active');
-        drawer.setAttribute('aria-hidden', 'false');
-        backdrop.setAttribute('aria-hidden', 'false');
-        toggleBtn.setAttribute('aria-expanded', 'true');
         document.body.classList.add('overflow-hidden');
-
-        const firstFocusable = drawer.querySelector('button, a, [tabindex]:not([tabindex="-1"])');
-        window.setTimeout(() => {
-          (closeBtn || firstFocusable)?.focus();
-        }, 0);
       };
 
-      const closeDrawer = (returnFocus = true) => {
+      const closeDrawer = () => {
         drawer.classList.remove('active');
         backdrop.classList.remove('active');
-        drawer.setAttribute('aria-hidden', 'true');
-        backdrop.setAttribute('aria-hidden', 'true');
-        toggleBtn.setAttribute('aria-expanded', 'false');
         document.body.classList.remove('overflow-hidden');
-        const scrollingElement = document.scrollingElement || document.documentElement;
-        scrollingElement.scrollLeft = 0;
-        document.body.scrollLeft = 0;
-
-        if (returnFocus && previouslyFocusedElement) {
-          previouslyFocusedElement.focus();
-        }
       };
 
       toggleBtn.addEventListener('click', () => {
-        if (drawer.classList.contains('active')) {
-          closeDrawer();
-        } else {
-          openDrawer();
-        }
+        drawer.classList.contains('active') ? closeDrawer() : openDrawer();
       });
-      if (closeBtn) closeBtn.addEventListener('click', () => closeDrawer());
-      backdrop.addEventListener('click', () => closeDrawer());
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      backdrop.addEventListener('click', closeDrawer);
 
       drawer.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => closeDrawer(false));
-      });
-
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && drawer.classList.contains('active')) {
-          closeDrawer();
-        }
+        link.addEventListener('click', closeDrawer);
       });
     }
 
