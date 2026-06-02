@@ -260,3 +260,25 @@
 .card-service:hover .card-service-link {
   color: var(--color-accent);
 }
+
+#btn-service-discuss {
+  margin-top: var(--space-md);
+}
+
+#btn-service-discuss i {
+  margin-left: var(--space-xxs);
+  font-size: 11px;
+}
+
+#btn-service-cta-contact i {
+  margin-left: var(--space-xxs);
+}
+
+#icon-delivery-equipment i {
+  font-size: 1.15rem;
+}
+
+.card-service-link i {
+  font-size: 11px;
+}
+

@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     
     <div class="dropdown-container" id="dropdown-services-container">
       <button class="dropdown-toggle" id="btn-dropdown-services" aria-haspopup="true" aria-expanded="false">
-        Services <i class="fa-solid fa-chevron-down" style="font-size: 10px; margin-left: 2px;"></i>
+        Services <i class="fa-solid fa-chevron-down"></i>
       </button>
       <div class="dropdown-menu" id="dropdown-services-menu" role="menu">
         <a href="services/fire-extinguishers.html" class="dropdown-item" id="link-dropdown-extinguishers" role="menuitem">Fire Extinguishers</a>
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       
       <div class="offcanvas-submenu-container" id="mobile-services-submenu-container">
         <button class="offcanvas-submenu-toggle" id="mobile-btn-submenu-toggle">
-          Services <i class="fa-solid fa-chevron-down" style="font-size: 11px;"></i>
+          Services <i class="fa-solid fa-chevron-down"></i>
         </button>
         <div class="offcanvas-submenu" id="mobile-services-submenu">
           <a href="services/fire-extinguishers.html" class="offcanvas-submenu-link" id="mobile-link-extinguishers">Fire Extinguishers</a>
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     <!-- Company & Contact column -->
     <div class="footer-company-links" id="footer-company-column">
       <h4 class="footer-title" id="footer-company-title">Company</h4>
-      <ul class="footer-links" id="footer-company-links-list" style="margin-bottom: var(--space-lg);">
+      <ul class="footer-links" id="footer-company-links-list">
         <li class="footer-link-item"><a href="about.html" id="footer-link-about">About Us</a></li>
         <li class="footer-link-item"><a href="contact.html" id="footer-link-contact">Contact</a></li>
       </ul>

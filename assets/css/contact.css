@@ -282,3 +282,22 @@ select.form-control {
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-lg);
 }
+
+#btn-submit-contact {
+  width: auto;
+  align-self: flex-start;
+}
+
+#btn-submit-contact i {
+  margin-left: var(--space-xxs);
+  font-size: 11px;
+}
+
+.sidebar-contact-value a {
+  color: white;
+}
+
+#btn-success-modal-close {
+  width: 100%;
+}
+

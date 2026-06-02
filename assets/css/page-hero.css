@@ -193,3 +193,9 @@
 .btn-hero-quote:active {
   transform: scale(0.98);
 }
+
+.btn-hero-quote i {
+  margin-left: var(--space-xxs);
+  font-size: 11px;
+}
+

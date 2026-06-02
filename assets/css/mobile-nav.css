@@ -206,3 +206,8 @@
 .offcanvas-actions .btn {
   width: 100%;
 }
+
+.offcanvas-submenu-toggle i {
+  font-size: 11px;
+}
+

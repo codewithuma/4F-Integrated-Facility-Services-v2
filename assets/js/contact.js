@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <p class="success-modal-desc" id="success-modal-desc-body">
             Thank you <strong id="success-user-name">Guest</strong>. We have received your inquiry for facility services. Our operations team will contact you within one business day.
           </p>
-          <button class="btn btn-primary" id="btn-success-modal-close" style="width: 100%;">Close</button>
+          <button class="btn btn-primary" id="btn-success-modal-close">Close</button>
         </div>
       `;
       document.body.appendChild(overlay);

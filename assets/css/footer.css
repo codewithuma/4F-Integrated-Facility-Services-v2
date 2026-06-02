@@ -150,3 +150,8 @@
     align-items: center;
   }
 }
+
+#footer-company-links-list {
+  margin-bottom: var(--space-lg);
+}
+

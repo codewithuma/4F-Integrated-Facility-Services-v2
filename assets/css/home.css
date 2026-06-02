@@ -326,3 +326,12 @@
 .promise-action {
   margin-top: var(--space-xl);
 }
+
+#btn-hero-explore i {
+  margin-left: var(--space-xxs);
+}
+
+.leader-info .btn-text i {
+  font-size: 11px;
+}
+

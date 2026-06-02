@@ -108,3 +108,8 @@
   background-color: var(--color-bg-card);
   padding: var(--section-padding);
 }
+
+#btn-about-cta-contact i {
+  margin-left: var(--space-xxs);
+}
+
