@@ -236,7 +236,7 @@
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   display: flex;
@@ -247,6 +247,20 @@
 .card-service:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
+}
+
+.card-service-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--color-border);
+  transition: transform var(--transition-normal);
+}
+
+.card-service:hover .card-service-img {
+  transform: scale(1.02);
 }
 
 .card-service-icon {
@@ -260,6 +274,20 @@
   justify-content: center;
   font-size: 1.25rem;
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.card-service-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.card-service-header .card-service-icon {
+  width: 40px; /* Slightly more compact for side-by-side header */
+  height: 40px;
+  font-size: 1.1rem;
 }
 
 .card-service-title {
@@ -268,6 +296,11 @@
   color: var(--color-primary);
   margin-top: var(--space-md);
   margin-bottom: var(--space-xs);
+}
+
+.card-service-header .card-service-title {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .card-service-desc {
