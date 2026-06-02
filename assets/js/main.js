@@ -268,8 +268,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (whatsappFloat) {
     whatsappFloat.addEventListener('click', (e) => {
       e.preventDefault();
-      // Open WhatsApp chat in a new tab safely with mock phone details
-      window.open('https://wa.me/910000000000', '_blank', 'noopener,noreferrer');
+      // Open WhatsApp chat in a new tab safely with mock phone details and a pre-filled inquiry message
+      const waMessage = encodeURIComponent("Hi 4F Integrated Facility Services, I would like to inquire about facility management services for my property.");
+      window.open(`https://wa.me/918886320444?text=${waMessage}`, '_blank', 'noopener,noreferrer');
     });
   }
 
