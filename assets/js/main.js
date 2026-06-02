@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
           const breadcrumbsDiv = pageHeroContainer.querySelector('#page-hero-breadcrumbs-div');
           if (breadcrumbsDiv) {
-            let breadcrumbsHTML = `<a href="${prefix}index.html">Home</a> <span>/</span> `;
+            let breadcrumbsHTML = `<a href="${prefix || './'}">Home</a> <span>/</span> `;
             if (parentLink && parentTitle) {
               breadcrumbsHTML += `<a href="${prefix}${parentLink}">${parentTitle}</a> <span>/</span> `;
             }
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           // Adjust back button path
           const backBtn = pageHeroContainer.querySelector('#btn-hero-back-link');
           if (backBtn) {
-            backBtn.setAttribute('href', prefix + 'index.html');
+            backBtn.setAttribute('href', prefix || './');
           }
         })()
       : Promise.resolve();
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         let adjustedHref = href;
         if (href.startsWith('/')) {
           if (href === '/') {
-            adjustedHref = 'index.html';
+            adjustedHref = './';
           } else if (href.startsWith('/services/')) {
             adjustedHref = 'services/' + href.substring(10) + '.html';
           } else {
@@ -108,8 +108,18 @@ document.addEventListener('DOMContentLoaded', async () => {
           }
         }
 
+        // Convert index.html or empty references to clean relative directory paths
+        if (adjustedHref === 'index.html' || adjustedHref === '') {
+          adjustedHref = './';
+        }
+
         // Prepend prefix to adjust paths correctly
-        link.setAttribute('href', prefix + adjustedHref);
+        let finalHref = prefix + adjustedHref;
+        // Normalize .././ to ../
+        if (finalHref.startsWith('.././')) {
+          finalHref = '../' + finalHref.substring(5);
+        }
+        link.setAttribute('href', finalHref);
       });
     });
   };
@@ -240,7 +250,10 @@ document.addEventListener('DOMContentLoaded', async () => {
    */
   const applyActiveNavigation = () => {
     const currentPath = window.location.pathname;
-    const currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+    let currentPage = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.html';
+    if (currentPage === '' || currentPage === '/') {
+      currentPage = 'index.html';
+    }
     
     // Select links in both header nav and offcanvas mobile menu
     const menuLinks = document.querySelectorAll('#nav-menu-desktop a, #mobile-nav-links-block a');
@@ -249,10 +262,21 @@ document.addEventListener('DOMContentLoaded', async () => {
       const href = link.getAttribute('href');
       if (!href) return;
 
-      const linkPage = href.substring(href.lastIndexOf('/') + 1);
+      let linkPage = href.substring(href.lastIndexOf('/') + 1);
+      // Strip hashes
+      if (linkPage.includes('#')) {
+        linkPage = linkPage.substring(0, linkPage.indexOf('#'));
+      }
+      
+      let isMatch = linkPage === currentPage;
+      
+      // Handle home/index routes matching roots
+      if ((currentPage === 'index.html' || currentPage === '') && (linkPage === '' || linkPage === '.' || linkPage === 'index.html')) {
+        isMatch = true;
+      }
       
       // Strict equality comparison for matching active routes
-      if (linkPage === currentPage) {
+      if (isMatch) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
