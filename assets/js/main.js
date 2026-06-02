@@ -471,4 +471,37 @@ document.addEventListener('DOMContentLoaded', async () => {
       delay: 50
     });
   }
+
+  // Testimonial Swiper Slider Carousel
+  if (document.querySelector('.testimonial-swiper')) {
+    new Swiper('.testimonial-swiper', {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: true,
+      grabCursor: true,
+      autoplay: {
+        delay: 5500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: '.slider-btn-next',
+        prevEl: '.slider-btn-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 24,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        }
+      }
+    });
+  }
 });
