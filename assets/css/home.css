@@ -1,7 +1,7 @@
 .home-hero {
   position: relative;
   background: var(--gradient-hero);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   padding: clamp(4rem, 3rem + 8vw, 8rem) 0;
   min-height: 550px;
   display: flex;
@@ -32,7 +32,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, var(--color-primary) 25%, rgba(var(--color-primary-rgb), 0.85) 60%, rgba(var(--color-primary-rgb), 0.4) 100%);
+  background: var(--gradient-hero-overlay);
   z-index: 2;
 }
 
@@ -61,7 +61,7 @@
   width: 7px;
   height: 7px;
   border-radius: var(--radius-circle);
-  background-color: var(--color-emerald);
+  background-color: var(--emerald);
 }
 
 .home-hero-title {
@@ -73,7 +73,7 @@
 }
 
 .home-hero-title span {
-  color: var(--color-emerald);
+  color: var(--emerald);
 }
 
 .home-hero-desc {
@@ -106,7 +106,7 @@
   font-family: var(--font-family-headings);
   font-size: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
   font-weight: var(--weight-bold);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 .home-stat-label {
@@ -120,7 +120,7 @@
 
 /* Philosophy Section ("Why Choose Us" / "#why") */
 .section-why {
-  background-color: var(--color-bg-light);
+  background-color: var(--background);
   padding: var(--section-padding);
 }
 
@@ -144,8 +144,8 @@
 
 /* Leadership Card */
 .leader-card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   box-shadow: var(--shadow-md);
@@ -158,8 +158,8 @@
   width: 56px;
   height: 56px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  color: var(--color-text-light);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -172,14 +172,14 @@
 
 .leader-info h4 {
   font-size: var(--font-size-base);
-  color: var(--color-primary);
+  color: var(--primary);
   font-weight: var(--weight-bold);
 }
 
 .leader-info .title {
   font-size: var(--font-size-xs);
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   letter-spacing: 0.05em;
   font-weight: var(--weight-semibold);
 }
@@ -187,7 +187,7 @@
 .leader-quote {
   font-size: var(--font-size-sm);
   font-style: italic;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
   margin-top: var(--space-sm);
 }
@@ -199,11 +199,11 @@
   gap: var(--space-xxs);
   font-size: var(--font-size-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 .leader-info .btn-text:hover {
-  color: var(--color-accent);
+  color: var(--primary);
 }
 
 /* 4F Pillars Cards Grid */
@@ -220,8 +220,8 @@
 }
 
 .pillar-card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
@@ -237,8 +237,8 @@
   width: 44px;
   height: 44px;
   border-radius: var(--radius-md);
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald);
+  background-color: var(--emerald-soft);
+  color: var(--emerald);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,13 +248,13 @@
 .pillar-title {
   font-size: var(--font-size-base);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-top: var(--space-md);
 }
 
 .pillar-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   margin-top: var(--space-xs);
   line-height: var(--line-height-normal);
 }
@@ -263,7 +263,7 @@
 .home-services {
   background-color: #fafbfd;
   padding: var(--section-padding);
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
 }
 
 .services-hub-grid {
@@ -287,15 +287,15 @@
 
 /* Shared Home CTA Promise Banner */
 .promise-banner {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: var(--space-xxl) 0;
   text-align: center;
 }
 
 .promise-icon {
   font-size: 2.25rem;
-  color: var(--color-emerald);
+  color: var(--emerald);
 }
 
 .promise-quote {
@@ -358,9 +358,9 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-circle);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   background-color: #ffffff;
-  color: var(--color-primary);
+  color: var(--primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -371,11 +371,11 @@
 }
 
 .slider-btn:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
-  border-color: var(--color-primary);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
   transform: translateY(-50%) scale(1.08);
-  box-shadow: 0 8px 20px rgba(var(--color-primary-rgb), 0.15);
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
 /* Position for standard desktop/laptop viewports */
@@ -415,17 +415,17 @@
 .testimonial-slider-container .swiper-pagination-bullet {
   width: 8px;
   height: 8px;
-  background-color: var(--color-border);
+  background-color: var(--border);
   opacity: 1;
   transition: all var(--transition-normal) !important;
   border-radius: var(--radius-circle);
 }
 
 .testimonial-slider-container .swiper-pagination-bullet-active {
-  background-color: var(--color-accent) !important;
+  background-color: var(--primary) !important;
   width: 24px !important;
   border-radius: 4px !important;
-  box-shadow: 0 0 10px rgba(var(--color-accent-rgb), 0.4);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--primary) 40%, transparent);
 }
 
 /* Testimonial Cards & Swiper Equal Heights */
@@ -437,7 +437,7 @@
 .card-testimonial {
   padding: var(--space-xl) var(--space-lg);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   background-color: #ffffff;
   position: relative;
   box-shadow: var(--shadow-sm);
@@ -453,13 +453,13 @@
 .card-testimonial:hover {
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(8, 30, 68, 0.08);
-  border-color: rgba(var(--color-primary-rgb), 0.15);
+  border-color: color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
 .card-testimonial-quote {
   font-size: var(--font-size-base);
   font-style: italic;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   margin-bottom: 0;
   position: relative;
   line-height: 1.7;
@@ -474,7 +474,7 @@
   content: "“";
   font-family: var(--font-family-headings);
   font-size: 8rem;
-  color: rgba(var(--color-accent-rgb), 0.04);
+  color: color-mix(in srgb, var(--primary) 4%, transparent);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -488,7 +488,7 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xs);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
   padding-bottom: var(--space-md);
   margin-bottom: var(--space-md);
   width: 100%;
@@ -499,19 +499,19 @@
   width: 54px; /* Slightly larger for premium centered look */
   height: 54px;
   border-radius: var(--radius-circle);
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
-  color: var(--color-text-light);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: var(--weight-bold);
   font-family: var(--font-family-headings);
   font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(var(--color-primary-rgb), 0.15);
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--primary) 15%, transparent);
 }
 
 .swiper-slide:nth-child(even) .card-testimonial-avatar {
-  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  background: var(--gradient-accent-glow);
 }
 
 .card-testimonial-meta {
@@ -523,14 +523,14 @@
 
 .card-testimonial-meta h5 {
   font-size: var(--font-size-sm);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: 0;
   font-weight: var(--weight-bold);
 }
 
 .card-testimonial-meta span {
   font-size: 11px;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   font-weight: var(--weight-medium);
 }
 

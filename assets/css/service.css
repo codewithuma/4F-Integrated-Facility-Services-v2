@@ -1,6 +1,6 @@
 /* Consolidated Service Details Layout */
 .service-overview-section {
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   padding: var(--section-padding);
 }
 
@@ -28,7 +28,7 @@
 .service-overview-image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
 }
 
@@ -40,15 +40,21 @@
 
 /* Service Delivery Features Section */
 .service-delivery-section {
-  background-color: var(--color-bg-light);
+  background-color: var(--background);
   padding: var(--section-padding);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+#section-housekeeping-specialties,
+#section-deepcleaning-specialties {
+  border-top: none;
+  background-color: var(--card);
 }
 
 .delivery-card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
   box-shadow: var(--shadow-sm);
@@ -69,7 +75,7 @@
   object-fit: cover;
   border-radius: var(--radius-md);
   margin-bottom: var(--space-md);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   transition: transform var(--transition-normal);
 }
 
@@ -97,8 +103,8 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald);
+  background-color: var(--emerald-soft);
+  color: var(--emerald);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -114,19 +120,19 @@
 .delivery-title {
   font-size: var(--font-size-lg);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: var(--space-xs);
 }
 
 .delivery-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
 /* Service Auditing Checklist Section */
 .service-audit-section {
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   padding: var(--section-padding);
 }
 
@@ -152,8 +158,8 @@
 
 .service-checklist {
   list-style: none;
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
@@ -165,7 +171,7 @@
   gap: var(--space-md);
   padding-bottom: var(--space-md);
   margin-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
 }
 
 .service-checklist-item:last-child {
@@ -178,8 +184,8 @@
   width: 28px;
   height: 28px;
   border-radius: var(--radius-circle);
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald);
+  background-color: var(--emerald-soft);
+  color: var(--emerald);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,15 +197,15 @@
 .service-checklist-text {
   font-size: var(--font-size-sm);
   font-weight: var(--weight-medium);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   margin-top: 3px;
   line-height: var(--line-height-normal);
 }
 
 /* Service Generic Bottom CTA Block */
 .service-cta-banner {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: var(--space-xl) 0;
 }
 
@@ -222,7 +228,7 @@
 .service-cta-banner h3 {
   font-size: var(--font-size-2xl);
   font-weight: var(--weight-bold);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 .service-cta-banner p {
@@ -233,8 +239,8 @@
 
 /* Service Hub Grid Item (Home services quicklinks) */
 .card-service {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-md);
   box-shadow: var(--shadow-sm);
@@ -255,7 +261,7 @@
   object-fit: cover;
   border-radius: var(--radius-md);
   margin-bottom: var(--space-md);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   transition: transform var(--transition-normal);
 }
 
@@ -267,8 +273,8 @@
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  color: var(--color-text-light);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -293,7 +299,7 @@
 .card-service-title {
   font-size: var(--font-size-base);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-top: var(--space-md);
   margin-bottom: var(--space-xs);
 }
@@ -305,7 +311,7 @@
 
 .card-service-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
   flex-grow: 1;
 }
@@ -316,12 +322,12 @@
   gap: var(--space-xxs);
   font-size: var(--font-size-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-top: var(--space-md);
 }
 
 .card-service:hover .card-service-link {
-  color: var(--color-accent);
+  color: var(--primary);
 }
 
 #btn-service-discuss {
