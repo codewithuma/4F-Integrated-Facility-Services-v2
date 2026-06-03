@@ -36,34 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
       card.classList.add('active');
     }
 
-    card.addEventListener('click', () => {
-      if (checkbox) {
-        if (checkbox.type === 'radio') {
-          // Uncheck all radios in matching name group
-          const groupName = checkbox.name;
-          const siblings = document.querySelectorAll(`input[name="${groupName}"]`);
-          siblings.forEach(sibling => {
-            sibling.closest('.checkbox-card').classList.remove('active');
-          });
-          checkbox.checked = true;
-          card.classList.add('active');
-        } else {
-          // Toggle checkbox check
-          checkbox.checked = !checkbox.checked;
-          card.classList.toggle('active', checkbox.checked);
-        }
-        validateStep(currentStep); // Re-validate step instantly
-      }
-    });
+    card.addEventListener('click', (e) => {
+      if (!checkbox) return;
 
-    // Make sure direct clicks to checkbox indicator are handled smoothly
     if (checkbox) {
       checkbox.addEventListener('click', (e) => {
         e.stopPropagation(); // Avoid double click toggle
         card.classList.toggle('active', checkbox.checked);
         validateStep(currentStep);
       });
-    }
+      }
+      
+      validateStep(currentStep); // Re-validate step instantly
+    });
   });
 
   // ==========================================================================

@@ -25,9 +25,8 @@ Projects built with this framework must follow this modular directory hierarchy.
 │   │   └── style.css         # Global Stylesheet (Tokens, resets, buttons, shared layout)
 │   ├── images/               # Web-optimized assets (PNG, SVG, JPG, WebP)
 │   ├── js/
-│   │   ├── contact.js        # Contact page validation and submission logic
 │   │   ├── main.js           # Core site logic, component loading, carousel, header triggers
-│   │   └── quote.js          # Interactive Quote calculator and multi-step form logic
+│   │   └── quote.js          # Interactive Quote wizard and multi-step sheet submission logic
 │   └── video/                # Compressed video backgrounds and media assets
 ├── components/               # Modular HTML components (fetched dynamically by main.js)
 │   ├── footer.html           # Shared site footer block
