@@ -36,4 +36,21 @@ This file tracks the design and content modifications requested by the client.
   - Refactored all gradient variables under `:root` of [style.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/style.css) (`--gradient-hero`, `--gradient-hero-overlay`, `--gradient-emerald`, `--gradient-soft`, `--gradient-accent`) to be fully derived from `--primary`, `--secondary`, and `--accent` using `color-mix()`, ensuring changing one base color updates all gradients site-wide.
   - Refactored `home.css`, `about.css`, `contact.css`, `header.css`, `page-hero.css`, and `service.css` to reference these unified gradient variables rather than declaring linear-gradient properties inline.
 
+## June 3, 2026
+
+### 1. Interactive Quote Stepper Form Wizard Integration (`contact.html`)
+- **Requested Modification:** Bring the form from `quote.html` into the Contact Us page, replacing the legacy contact form with the Quote form.
+- **Actions Taken:**
+  - Integrated the stepper progress header indicators (`.stepper-progress`) and the multi-step form wizard (`#quote-wizard-form` inside `.quote-card`) into the left column (`#block-contact-form-col`) of the [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html) page, expanding the services options list to cover all 8 specialized services from the homepage.
+  - Removed all FontAwesome service icons from the titles in Step 1 checkbox cards inside [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html).
+  - Refactored `.checkbox-card` in [quote.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/quote.css) to use a vertical flex layout (`flex-direction: column;`), wrapping the custom checkbox indicator and card title side-by-side inside a `.checkbox-card-header` wrapper, and placing the description paragraph (`.checkbox-card-desc`) below it to span the full width of the card. Restructured all cards in both Step 1 and Step 2 of [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html) to match.
+  - Configured the `.checkbox-grid` grid template columns in [quote.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/quote.css) to display 3 cards per row on screen widths of 768px and wider (instead of 2 columns). This neatly formats Step 1's services into a 3x3 layout and Step 2's categories into a single row.
+  - Linked the wizard stylesheet [quote.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/quote.css) via `@import` in the master [style.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/style.css).
+  - Appended missing utility classes and success ticket container styles (`.success-frame`, `.success-icon-loop`, `.success-ticket-id`, `.init-hidden`, `.h-100px-no-resize`, and font size overrides) to [quote.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/quote.css).
+  - Configured all form feedback and indicator colors to use the dynamic variables theme (like `var(--primary)`, `var(--secondary)`, `var(--accent)`, `color-mix()`).
+  - Restructured form input groups in Step 3 to follow the standard project convention (labels before inputs) ensuring adjacent-sibling CSS selectors (`.form-control.is-invalid + .invalid-feedback`) resolve validation error displays correctly.
+  - Replaced the page-specific script at the bottom of [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html) with [quote.js](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/js/quote.js) to wire up step-by-step logic, slider changes, validations, and ticket reference generation.
+  - Integrated the Google Sheets Web App endpoint inside [quote.js](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/js/quote.js), submitting all completed quote form parameters asynchronously via a POST fetch request to automatically write submissions into the client's Google Sheet.
+
+
 

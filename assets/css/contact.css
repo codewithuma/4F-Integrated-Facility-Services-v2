@@ -13,7 +13,7 @@
   .contact-grid {
     grid-template-columns: 8fr 4fr;
     align-items: flex-start;
-    gap: var(--space-xxl);
+    gap: var(--space-lg);
   }
 }
 
@@ -22,14 +22,8 @@
   background-color: var(--card);
   border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   box-shadow: var(--shadow-lg);
-}
-
-@media (min-width: 768px) {
-  .contact-card {
-    padding: var(--space-xl);
-  }
 }
 
 .contact-form {

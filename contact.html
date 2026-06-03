@@ -55,51 +55,265 @@
           
           <!-- Left Column: Form -->
           <div class="lg:col-span-2" id="block-contact-form-col">
-            <div class="contact-card" id="card-contact-form-wrapper">
-              <form class="contact-form" id="form-contact-inquiry" novalidate>
+            
+            <!-- Stepper Header Progress Indicator -->
+            <div class="stepper-progress">
+              <div class="stepper-progress-fill"></div>
+              <div class="step-indicator active" data-step-title="Services">1</div>
+              <div class="step-indicator" data-step-title="Facility">2</div>
+              <div class="step-indicator" data-step-title="Contact">3</div>
+              <div class="step-indicator" data-step-title="Summary">4</div>
+            </div>
+
+            <!-- Main Interactive Form Wizard Card -->
+            <div class="contact-card quote-card" id="card-contact-form-wrapper" data-aos="fade-up">
+              <form id="quote-wizard-form" onsubmit="event.preventDefault();">
                 
-                <div class="form-group-row" id="form-row-personal">
-                  <div class="form-group" id="group-input-name">
-                    <label class="form-label" for="name">Full Name</label>
-                    <input id="name" name="name" type="text" maxlength="100" class="form-control" placeholder="Jane Doe" required>
+                <div id="wizard-interactive-box">
+                  
+                  <!-- STEP 1: Select Service Category -->
+                  <div class="step-content active">
+                    <div class="step-title-block">
+                      <h3>Select Required Services</h3>
+                      <p>Choose one or more facility service pillars you wish to include in your customized contract.</p>
+                    </div>
+                    
+                    <div class="checkbox-grid">
+                      <!-- Choice 1 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="fire-extinguishers">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Fire Extinguishers</span>
+                        </div>
+                        <span class="checkbox-card-desc">ISI-certified extinguishers, audits, and periodic refilling.</span>
+                      </div>
+                      <!-- Choice 2 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="fire-amc">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Fire AMC</span>
+                        </div>
+                        <span class="checkbox-card-desc">Comprehensive annual maintenance for fire safety systems.</span>
+                      </div>
+                      <!-- Choice 3 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="fire-noc">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Fire NOC Consulting</span>
+                        </div>
+                        <span class="checkbox-card-desc">End-to-end documentation and liaison for Fire Department approvals.</span>
+                      </div>
+                      <!-- Choice 4 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="housekeeping">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Housekeeping</span>
+                        </div>
+                        <span class="checkbox-card-desc">Trained, uniformed, supervised housekeeping teams.</span>
+                      </div>
+                      <!-- Choice 5 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="deep-cleaning">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Deep Cleaning</span>
+                        </div>
+                        <span class="checkbox-card-desc">Advanced deep-cleaning operations for premium spaces.</span>
+                      </div>
+                      <!-- Choice 6 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="security">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Security</span>
+                        </div>
+                        <span class="checkbox-card-desc">Disciplined security personnel and access control.</span>
+                      </div>
+                      <!-- Choice 7 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="pest-control">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Pest Control</span>
+                        </div>
+                        <span class="checkbox-card-desc">Safe, scheduled, audit-ready pest control programs.</span>
+                      </div>
+                      <!-- Choice 8 -->
+                      <div class="checkbox-card">
+                        <input type="checkbox" name="services" value="full-integrated">
+                        <div class="checkbox-card-header">
+                          <div class="checkbox-card-indicator"></div>
+                          <span class="checkbox-card-title">Full Integrated Services</span>
+                        </div>
+                        <span class="checkbox-card-desc">One partner. One accountability layer. Every facility need.</span>
+                      </div>
+                    </div>
+                    
+                    <!-- Service Error validation cue -->
+                    <div class="invalid-feedback text-center fs-13">Please select at least one facility service to continue.</div>
                   </div>
-                  <div class="form-group" id="group-input-company">
-                    <label class="form-label" for="company">Company Name</label>
-                    <input id="company" name="company" type="text" maxlength="120" class="form-control" placeholder="Acme Corp">
+
+                  <!-- STEP 2: Facility Dimension & Profiles -->
+                  <div class="step-content">
+                    <div class="step-title-block">
+                      <h3>Facility Sizing & Profile</h3>
+                      <p>Provide the structure category and dimensions of your facility to help calibrate the service logistics.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                      <label class="form-label">Facility Category</label>
+                      <div class="checkbox-grid">
+                        <!-- Type 1 -->
+                        <div class="checkbox-card">
+                          <input type="radio" name="facility-type" value="commercial" checked>
+                          <div class="checkbox-card-header">
+                            <div class="checkbox-card-indicator"></div>
+                            <span class="checkbox-card-title">Commercial Offices</span>
+                          </div>
+                          <span class="checkbox-card-desc">IT parks, retail showrooms, corporate towers, and tech workspaces.</span>
+                        </div>
+                        <!-- Type 2 -->
+                        <div class="checkbox-card">
+                          <input type="radio" name="facility-type" value="industrial">
+                          <div class="checkbox-card-header">
+                            <div class="checkbox-card-indicator"></div>
+                            <span class="checkbox-card-title">Industrial / Logistics</span>
+                          </div>
+                          <span class="checkbox-card-desc">Manufacturing plants, warehouses, fabrication grids, and supply hubs.</span>
+                        </div>
+                        <!-- Type 3 -->
+                        <div class="checkbox-card">
+                          <input type="radio" name="facility-type" value="residential">
+                          <div class="checkbox-card-header">
+                            <div class="checkbox-card-indicator"></div>
+                            <span class="checkbox-card-title">Premium Residential</span>
+                          </div>
+                          <span class="checkbox-card-desc">Apartment societies, luxury villas, and estate communities.</span>
+                        </div>
+                      </div>
+                      
+                      <div class="invalid-feedback text-center fs-13">Please select your facility category to continue.</div>
+                    </div>
+                    
+                    <!-- Slider Input for Dimensions -->
+                    <div class="range-container">
+                      <div class="range-labels">
+                        <label class="form-label mb-0">Estimated Service Area</label>
+                        <span id="facility-size-value">15,000 Sq. Ft.</span>
+                      </div>
+                      <input type="range" class="range-slider" id="facility-size" min="1000" max="100000" step="1000" value="15000">
+                      <div class="flex-between fs-11 text-muted">
+                        <span>1,000 Sq. Ft.</span>
+                        <span>50,000 Sq. Ft.</span>
+                        <span>100,000+ Sq. Ft.</span>
+                      </div>
+                    </div>
                   </div>
+
+                  <!-- STEP 3: Contact & Spec details -->
+                  <div class="step-content">
+                    <div class="step-title-block">
+                      <h3>Contact & Company Details</h3>
+                      <p>Provide your contact profile so our auditing supervisors can reach you for custom assessments.</p>
+                    </div>
+                    
+                    <div class="grid grid-2">
+                      <!-- Name -->
+                      <div class="form-group">
+                        <label class="form-label" for="contact-name">Your Full Name *</label>
+                        <input type="text" class="form-control" id="contact-name" placeholder="John Doe" required>
+                        <div class="invalid-feedback">Full name is required.</div>
+                      </div>
+                      <!-- Company -->
+                      <div class="form-group">
+                        <label class="form-label" for="contact-company">Company / Association Name</label>
+                        <input type="text" class="form-control" id="contact-company" placeholder="Acme Corp">
+                      </div>
+                      <!-- Email -->
+                      <div class="form-group">
+                        <label class="form-label" for="contact-email">Corporate Email Address *</label>
+                        <input type="email" class="form-control" id="contact-email" placeholder="you@company.com" required>
+                        <div class="invalid-feedback">A valid corporate email is required.</div>
+                      </div>
+                      <!-- Phone -->
+                      <div class="form-group">
+                        <label class="form-label" for="contact-phone">Contact Phone Number *</label>
+                        <input type="tel" class="form-control" id="contact-phone" placeholder="+91 99999 88888" required>
+                        <div class="invalid-feedback">A valid phone number is required (10-15 digits).</div>
+                      </div>
+                    </div>
+                    
+                    <!-- Message Box -->
+                    <div class="form-group">
+                      <label class="form-label" for="contact-msg">Tell us about your specific facility challenges (optional)</label>
+                      <textarea class="form-control h-100px-no-resize" id="contact-msg" placeholder="Tell us about your facility and what you're looking for..."></textarea>
+                    </div>
+                  </div>
+
+                  <!-- STEP 4: Review Summary display -->
+                  <div class="step-content">
+                    <div class="step-title-block">
+                      <h3>Review Submission</h3>
+                      <p>Double-check your service specification criteria before dispatching to our Bangalore headquarters.</p>
+                    </div>
+                    
+                    <div class="quote-summary-panel">
+                      <div class="summary-list">
+                        <div class="summary-item">
+                          <span>Selected Services:</span>
+                          <strong id="summary-services">Fire Safety, Housekeeping</strong>
+                        </div>
+                        <div class="summary-item">
+                          <span>Facility profile:</span>
+                          <strong id="summary-facility">Commercial Offices (15,000 Sq. Ft.)</strong>
+                        </div>
+                        <div class="summary-item">
+                          <span>Contact Info:</span>
+                          <span id="summary-contact" class="text-right fs-13">John Doe<br>Email: john@doe.com<br>Phone: +91 99999 88888</span>
+                        </div>
+                        <div class="summary-item border-t-default pt-xs mt-xs">
+                          <span>Processing Timeline:</span>
+                          <strong class="text-accent">12-Hour Callback Guaranteed</strong>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <p class="fs-12 text-muted text-center mt-xs">
+                      By clicking Submit, you agree to allow 4F's facility audit supervisors to contact you at the phone/email provided.
+                    </p>
+                  </div>
+                  
+                  <!-- Navigation Action Buttons inside Form -->
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-outline btn-rounded btn-prev hidden" id="btn-prev"><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                    <button type="button" class="btn btn-secondary btn-rounded ml-auto" id="btn-next">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                  </div>
+                  
+                </div>
+                
+                <!-- Complete Success Ticket Block -->
+                <div id="wizard-success-box" class="success-frame init-hidden">
+                  <div class="success-icon-loop">
+                    <i class="fa-solid fa-circle-check"></i>
+                  </div>
+                  <h3>Thank You! Request Logged.</h3>
+                  <p>Your customized service contract blueprint request has been successfully dispatched to our Koramangala executive office.</p>
+                  
+                  <div class="success-ticket-id">
+                    Reference Ticket: <span id="success-ticket-id-val">4F-482918</span>
+                  </div>
+                  
+                  <p class="fs-13 text-muted">
+                    A technical supervisor under Managing Partner Rajshekhar will call you within 12 hours to schedule a complimentary on-site compliance gap analysis.
+                  </p>
+                  
+                  <a href="./" class="btn btn-secondary btn-rounded"><i class="fa-solid fa-house"></i> Back to Homepage</a>
                 </div>
 
-                <div class="form-group-row" id="form-row-contact">
-                  <div class="form-group" id="group-input-email">
-                    <label class="form-label" for="email">Email Address</label>
-                    <input id="email" name="email" type="email" maxlength="255" class="form-control" placeholder="you@company.com" required>
-                  </div>
-                  <div class="form-group" id="group-input-phone">
-                    <label class="form-label" for="phone">Phone Number</label>
-                    <input id="phone" name="phone" type="tel" maxlength="20" class="form-control" placeholder="+91 88863 20444" required>
-                  </div>
-                </div>
-
-                <div class="form-group" id="group-input-category">
-                  <label class="form-label" for="category">Service Category</label>
-                  <select id="category" name="category" class="form-control" required>
-                    <option value="" disabled selected>Select a service…</option>
-                    <option value="Fire Services">Fire Services</option>
-                    <option value="Housekeeping">Housekeeping</option>
-                    <option value="Security">Security</option>
-                    <option value="Pest Control">Pest Control</option>
-                    <option value="Full Integrated Management">Full Integrated Management</option>
-                  </select>
-                </div>
-
-                <div class="form-group" id="group-input-message">
-                  <label class="form-label" for="message">Message / Requirements</label>
-                  <textarea id="message" name="message" rows="5" maxlength="1000" class="form-control" placeholder="Tell us about your facility and what you're looking for…" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-primary" id="btn-submit-contact">
-                  Send Message <i class="fa-solid fa-paper-plane"></i>
-                </button>
               </form>
             </div>
           </div>
@@ -165,6 +379,6 @@
   <!-- Core JavaScript Logic -->
   <script src="assets/js/main.js"></script>
   <!-- Page Specific Logic -->
-  <script src="assets/js/contact.js"></script>
+  <script src="assets/js/quote.js"></script>
 </body>
 </html>

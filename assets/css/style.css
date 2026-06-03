@@ -6,6 +6,7 @@
 @import url("about.css");
 @import url("service.css");
 @import url("contact.css");
+@import url("quote.css");
 
 :root {
   /* 1. Base Colors (Edit these to update the entire site theme) */
