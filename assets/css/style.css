@@ -11,7 +11,9 @@
 :root {
   /* 1. Base Colors (Edit these to update the entire site theme) */
   --radius: 0.75rem;
-  --background: #ffffff;
+  --bg-white: #ffffff;
+  --text-white: #ffffff;
+  --background: var(--bg-white);
   
   --primary: #041f3f;
   --secondary: #008954;
@@ -21,17 +23,17 @@
   
   /* Derived from --primary */
   --foreground: color-mix(in srgb, var(--primary) 60%, #000000);             /* Very dark navy text (#031222 equivalent) */
-  --primary-foreground: color-mix(in srgb, var(--primary) 4%, #ffffff);     /* Light blue tint (#f8fafd equivalent) */
-  --primary-glow: color-mix(in srgb, var(--primary) 80%, #ffffff);           /* Lighter glow navy (#173c70 equivalent) */
+  --primary-foreground: color-mix(in srgb, var(--primary) 4%, var(--text-white));     /* Light blue tint (#f8fafd equivalent) */
+  --primary-glow: color-mix(in srgb, var(--primary) 80%, var(--bg-white));           /* Lighter glow navy (#173c70 equivalent) */
   --background-dark: color-mix(in srgb, var(--primary) 25%, #000000);        /* Deep navy dark bg (#030d1e equivalent) */
   --border-dark: color-mix(in srgb, var(--primary) 30%, #1e293b);            /* Dark navy border (#1c2f46 equivalent) */
   
   /* Derived from --secondary */
-  --secondary-soft: color-mix(in srgb, var(--secondary) 15%, #ffffff);       /* Soft green bg (#d9f7e5 equivalent) */
+  --secondary-soft: color-mix(in srgb, var(--secondary) 15%, var(--bg-white));       /* Soft green bg (#d9f7e5 equivalent) */
   --secondary-dark: color-mix(in srgb, var(--secondary) 80%, #000000);       /* Rich dark green (#00683d equivalent) */
 
   /* Derived from --foreground */
-  --muted-foreground: color-mix(in srgb, var(--foreground) 65%, #ffffff);    /* Slate grey text (#5c646f equivalent) */
+  --muted-foreground: color-mix(in srgb, var(--foreground) 65%, var(--text-white));    /* Slate grey text (#5c646f equivalent) */
   
   /* Structure Mappings */
   --card: var(--background);
@@ -42,20 +44,20 @@
   --secondary-foreground: var(--primary-foreground);
   --accent-foreground: var(--primary-foreground);
   
-  --muted: color-mix(in srgb, var(--primary) 4%, #ffffff);                  /* Soft grey bg (#f3f5f8 equivalent) */
+  --muted: color-mix(in srgb, var(--primary) 4%, var(--bg-white));                  /* Soft grey bg (#f3f5f8 equivalent) */
   
   --destructive: #e62c2c;
   --destructive-foreground: var(--primary-foreground);
   
-  --border: color-mix(in srgb, var(--primary) 6%, #ffffff);                  /* Light grey-blue border (#e0e5eb equivalent) */
+  --border: color-mix(in srgb, var(--primary) 6%, var(--bg-white));                  /* Light grey-blue border (#e0e5eb equivalent) */
   --input: var(--border);
   --ring: var(--primary);
 
   /* Original Gradients */
   --gradient-hero: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, #000000) 0%, color-mix(in srgb, var(--primary) 60%, #000000) 55%, color-mix(in srgb, var(--primary) 50%, var(--secondary)) 100%);
   --gradient-hero-overlay: linear-gradient(to right, var(--primary) 25%, color-mix(in srgb, var(--primary) 85%, transparent) 60%, color-mix(in srgb, var(--primary) 40%, transparent) 100%);
-  --gradient-emerald: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 90%, #000000), color-mix(in srgb, var(--secondary) 80%, #ffffff));
-  --gradient-soft: linear-gradient(180deg, color-mix(in srgb, var(--primary) 2%, #ffffff), color-mix(in srgb, var(--primary) 6%, #ffffff));
+  --gradient-emerald: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 90%, #000000), color-mix(in srgb, var(--secondary) 80%, var(--text-white)));
+  --gradient-soft: linear-gradient(180deg, color-mix(in srgb, var(--primary) 2%, var(--bg-white)), color-mix(in srgb, var(--primary) 6%, var(--bg-white)));
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
   --gradient-accent-glow: linear-gradient(135deg, var(--primary), var(--primary-glow));
 
@@ -64,10 +66,10 @@
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Glassmorphism Settings */
-  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg: color-mix(in srgb, var(--bg-white) 75%, transparent);
   --glass-bg-dark: rgba(10, 15, 29, 0.8);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-border-dark: rgba(255, 255, 255, 0.08);
+  --glass-border: color-mix(in srgb, var(--bg-white) 40%, transparent);
+  --glass-border-dark: color-mix(in srgb, var(--bg-white) 8%, transparent);
   --glass-blur: 16px;
 
   /* 2. Typography Rules */
@@ -353,16 +355,16 @@ p {
 }
 
 .btn-ghost-light {
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid color-mix(in srgb, var(--text-white) 30%, transparent);
   color: var(--primary-foreground);
-  background: rgba(255, 255, 255, 0.05);
+  background: color-mix(in srgb, var(--bg-white) 5%, transparent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
 .btn-ghost-light:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: color-mix(in srgb, var(--bg-white) 12%, transparent);
+  border-color: color-mix(in srgb, var(--text-white) 50%, transparent);
   transform: translateY(-1px);
 }
 
@@ -381,7 +383,7 @@ p {
 .btn-primary-light:hover {
   transform: scale(1.02);
   box-shadow: 0 16px 36px rgba(8, 30, 68, 0.16);
-  background-color: rgba(255, 255, 255, 0.95);
+  background-color: color-mix(in srgb, var(--bg-white) 95%, transparent);
 }
 
 .btn-primary-light:active {
@@ -445,7 +447,7 @@ p {
   width: 56px;
   height: 56px;
   background-color: #25d366;
-  color: white;
+  color: var(--text-white);
   border-radius: var(--radius-circle);
   display: flex;
   align-items: center;
@@ -458,7 +460,7 @@ p {
 .whatsapp-float:hover {
   transform: scale(1.08) rotate(8deg);
   background-color: #20ba5a;
-  color: white;
+  color: var(--text-white);
 }
 
 .whatsapp-float i {

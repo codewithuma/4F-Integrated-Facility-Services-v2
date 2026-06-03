@@ -38,7 +38,7 @@
   width: 46px;
   height: 46px;
   border-radius: var(--radius-circle);
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   border: 3px solid var(--border);
   color: var(--muted-foreground);
   font-family: var(--font-family-headings);
@@ -96,7 +96,7 @@
 
 /* 2. Step Containers and Transition Animations */
 .quote-card {
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
@@ -274,7 +274,7 @@
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
   cursor: pointer;
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   transition: all var(--transition-normal);
 }
 

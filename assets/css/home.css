@@ -45,8 +45,8 @@
   display: inline-flex;
   align-items: center;
   gap: var(--space-xs);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: color-mix(in srgb, var(--bg-white) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-white) 15%, transparent);
   border-radius: var(--radius-xl);
   padding: var(--space-xs) var(--space-md);
   font-size: var(--font-size-xs);
@@ -97,7 +97,7 @@
   grid-template-columns: repeat(3, 1fr);
   gap: var(--space-md);
   margin-top: var(--space-xxl);
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  border-top: 1px solid color-mix(in srgb, var(--text-white) 15%, transparent);
   padding-top: var(--space-lg);
   max-width: 650px;
 }
@@ -261,7 +261,7 @@
 
 /* Home Services Section */
 .home-services {
-  background-color: #fafbfd;
+  background-color: var(--primary-foreground);
   padding: var(--section-padding);
   border-top: 1px solid var(--border);
 }
@@ -311,7 +311,7 @@
 .promise-divider {
   width: 64px;
   height: 1px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: color-mix(in srgb, var(--bg-white) 20%, transparent);
   margin: var(--space-lg) auto;
 }
 
@@ -359,7 +359,7 @@
   height: 48px;
   border-radius: var(--radius-circle);
   border: 1px solid var(--border);
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   color: var(--primary);
   display: flex;
   align-items: center;
@@ -438,7 +438,7 @@
   padding: var(--space-xl) var(--space-lg);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border);
-  background-color: #ffffff;
+  background-color: var(--bg-white);
   position: relative;
   box-shadow: var(--shadow-sm);
   transition: all var(--transition-normal);

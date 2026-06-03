@@ -165,7 +165,7 @@ select.form-control {
   width: 36px;
   height: 36px;
   border-radius: var(--radius-sm);
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: color-mix(in srgb, var(--bg-white) 10%, transparent);
   color: var(--primary-foreground);
   display: flex;
   align-items: center;
@@ -288,7 +288,7 @@ select.form-control {
 }
 
 .sidebar-contact-value a {
-  color: white;
+  color: var(--text-white);
 }
 
 #btn-success-modal-close {

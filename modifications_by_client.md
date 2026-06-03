@@ -59,6 +59,16 @@ This file tracks the design and content modifications requested by the client.
   - Removed all duplicated hardcoded favicon and manifest link tags from all HTML files ([index.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/index.html), [about.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/about.html), [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html), and all service pages in `services/`), resolving them completely from a single central source of truth.
   - Updated [site.webmanifest](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/images/favicon/site.webmanifest) icon definitions to use relative paths (omitting the leading slash) so the browser can resolve web app manifests correctly regardless of site subfolder hosting.
 
+### 3. White Color Variable Extraction & Refactoring (`style.css`, `quote.css`, `home.css`, `contact.css`, `page-hero.css`, `footer.css`)
+- **Requested Modification:** Create single-place variables for white backgrounds and white text and apply them site-wide.
+- **Actions Taken:**
+  - Introduced two global variables, `--bg-white: #ffffff;` and `--text-white: #ffffff;` inside `:root` of [style.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/style.css).
+  - Replaced all raw hex occurrences of `#ffffff` and text colors of `white` with `var(--bg-white)` and `var(--text-white)` across all page stylesheets.
+  - Refactored all alpha/transparency white styles (e.g. `rgba(255, 255, 255, 0.15)`) to use the native browser CSS `color-mix(in srgb, var(--bg-white) percentage%, transparent)` / `color-mix(in srgb, var(--text-white) percentage%, transparent)` rules, guaranteeing that updating the base `--bg-white` or `--text-white` color immediately cascades to all text overlays, borders, glassmorphic card backgrounds, and button transitions.
+  - Updated the off-white background color (`#fafbfd`) of the `.home-services` section in [home.css](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/css/home.css) to reference `var(--primary-foreground)`. Because `--primary-foreground` is dynamically derived from `var(--text-white)`, changing the base white variables will correctly cascade and propagate to update this section background as well.
+
+
+
 
 
 
