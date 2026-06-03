@@ -39,12 +39,18 @@ document.addEventListener('DOMContentLoaded', () => {
     card.addEventListener('click', (e) => {
       if (!checkbox) return;
 
-    if (checkbox) {
-      checkbox.addEventListener('click', (e) => {
-        e.stopPropagation(); // Avoid double click toggle
+      // Toggle checkbox check if click is on card rather than the input itself
+      if (e.target !== checkbox) {
+        checkbox.checked = checkbox.type === 'radio' ? true : !checkbox.checked;
+      }
+      
+      // Update active classes for either checkbox or radio groups
+      if (checkbox.type === 'radio') {
+        document.querySelectorAll(`input[name="${checkbox.name}"]`).forEach(radio => {
+          radio.closest('.checkbox-card').classList.toggle('active', radio.checked);
+        });
+      } else {
         card.classList.toggle('active', checkbox.checked);
-        validateStep(currentStep);
-      });
       }
       
       validateStep(currentStep); // Re-validate step instantly
