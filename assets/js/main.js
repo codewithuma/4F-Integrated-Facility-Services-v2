@@ -4,6 +4,33 @@ document.addEventListener('DOMContentLoaded', async () => {
   const prefix = isSubpage ? '../' : '';
 
   /**
+   * Inject favicons into head dynamically from a single place
+   */
+  const injectFavicons = () => {
+    // Check if favicons/manifest are already present to prevent duplicate injection
+    if (document.querySelector('link[rel="manifest"]') || document.querySelector('link[sizes="96x96"]')) {
+      return;
+    }
+    const faviconHTML = `
+      <link rel="icon" type="image/png" href="${prefix}assets/images/favicon/favicon-96x96.png" sizes="96x96" />
+      <link rel="icon" type="image/svg+xml" href="${prefix}assets/images/favicon/favicon.svg" />
+      <link rel="shortcut icon" href="${prefix}assets/images/favicon/favicon.ico" />
+      <link rel="apple-touch-icon" sizes="180x180" href="${prefix}assets/images/favicon/apple-touch-icon.png" />
+      <link rel="manifest" href="${prefix}assets/images/favicon/site.webmanifest" />
+    `;
+    const tempDiv = document.createElement('div');
+    tempDiv.innerHTML = faviconHTML.trim();
+    Array.from(tempDiv.childNodes).forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE) {
+        document.head.appendChild(node);
+      }
+    });
+  };
+
+  // Run favicon injection
+  injectFavicons();
+
+  /**
    * Parallel Layout AJAX Components Injection
    */
   const loadPartials = async () => {
@@ -222,16 +249,24 @@ document.addEventListener('DOMContentLoaded', async () => {
   // Run Asynchronous Component Loader
   await loadPartials();
 
-  // Handle WhatsApp floating interaction actions
-  const whatsappFloat = document.querySelector('.whatsapp-float');
-  if (whatsappFloat) {
-    whatsappFloat.addEventListener('click', (e) => {
+  // Inject and initialize WhatsApp Floating Button dynamically
+  const injectWhatsappFloat = () => {
+    if (document.querySelector('.whatsapp-float')) return;
+    const a = document.createElement('a');
+    a.href = '#';
+    a.className = 'whatsapp-float';
+    a.id = 'btn-whatsapp-floating';
+    a.setAttribute('aria-label', 'Chat on WhatsApp');
+    a.innerHTML = '<i class="fa-brands fa-whatsapp"></i>';
+    document.body.appendChild(a);
+
+    a.addEventListener('click', (e) => {
       e.preventDefault();
-      // Open WhatsApp chat in a new tab safely with mock phone details and a pre-filled inquiry message
       const waMessage = encodeURIComponent("Hi 4F Integrated Facility Services, I would like to inquire about facility management services for my property.");
       window.open(`https://wa.me/918886320444?text=${waMessage}`, '_blank', 'noopener,noreferrer');
     });
-  }
+  };
+  injectWhatsappFloat();
 
   // Safe programmatic initialization of AOS Animations
   if (typeof AOS !== 'undefined') {

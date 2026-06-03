@@ -52,5 +52,14 @@ This file tracks the design and content modifications requested by the client.
   - Replaced the page-specific script at the bottom of [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html) with [quote.js](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/js/quote.js) to wire up step-by-step logic, slider changes, validations, and ticket reference generation.
   - Integrated the Google Sheets Web App endpoint inside [quote.js](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/js/quote.js), submitting all completed quote form parameters asynchronously via a POST fetch request to automatically write submissions into the client's Google Sheet.
 
+### 2. Centralised Dynamic Favicon Management (Site-wide)
+- **Requested Modification:** Centralise the management of favicons into a single place.
+- **Actions Taken:**
+  - Implemented dynamic favicon injection logic (`injectFavicons`) inside [main.js](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/js/main.js), which is loaded on every page of the website. The function dynamically appends the corrected relative path `<link>` tags (adjusted with `prefix` for subfolders) into the HTML `<head>`.
+  - Removed all duplicated hardcoded favicon and manifest link tags from all HTML files ([index.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/index.html), [about.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/about.html), [contact.html](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/contact.html), and all service pages in `services/`), resolving them completely from a single central source of truth.
+  - Updated [site.webmanifest](file:///c:/Users/ajaym/Documents/websites/client/Integrated%20Facility%20Management/assets/images/favicon/site.webmanifest) icon definitions to use relative paths (omitting the leading slash) so the browser can resolve web app manifests correctly regardless of site subfolder hosting.
+
+
+
 
 

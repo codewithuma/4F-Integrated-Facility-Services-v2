@@ -33,6 +33,8 @@
   height: auto;
   display: block;
   object-fit: contain;
+
+  border-radius: var(--space-xs);
 }
 
 .footer .logo-icon {

@@ -12,7 +12,6 @@
 }
 
 .header.sticky-scrolled {
-  background-color: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-sm);
   border-bottom-color: var(--border);
 }

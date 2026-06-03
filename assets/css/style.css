@@ -461,9 +461,8 @@ p {
   color: white;
 }
 
-.whatsapp-float svg {
-  width: 28px;
-  height: 28px;
+.whatsapp-float i {
+  font-size: 28px;
 }
 
 /* Fail-safe clickability for AOS animated elements */
