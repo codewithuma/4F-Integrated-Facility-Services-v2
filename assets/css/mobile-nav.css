@@ -59,6 +59,13 @@
   gap: var(--space-xs);
 }
 
+.offcanvas-menu .logo-img {
+  width: 130px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .offcanvas-menu .logo-icon {
   display: flex;
   height: 36px;

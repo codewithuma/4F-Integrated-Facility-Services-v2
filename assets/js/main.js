@@ -84,6 +84,15 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Extremely simple: prepend the relative folder prefix ('../' for subpages, empty for root)
         link.setAttribute('href', prefix + href);
       });
+
+      // Adjust image paths for nested subpages dynamically
+      const imgs = container.querySelectorAll('img');
+      imgs.forEach(img => {
+        const src = img.getAttribute('src');
+        if (src && !src.startsWith('http') && !src.startsWith('/') && !src.startsWith('data:')) {
+          img.setAttribute('src', prefix + src);
+        }
+      });
     });
   };
 

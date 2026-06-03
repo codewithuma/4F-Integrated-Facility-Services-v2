@@ -28,6 +28,13 @@
   gap: var(--space-xs);
 }
 
+.footer .logo-img {
+  width: 150px;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
 .footer .logo-icon {
   display: flex;
   height: 42px;
