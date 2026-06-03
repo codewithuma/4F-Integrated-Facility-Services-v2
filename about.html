@@ -34,7 +34,7 @@
       <div class="page-hero-overlay" id="about-hero-mask"></div>
       
       <div class="container" id="about-hero-content-block">
-        <a class="page-hero-back" href="index.html" id="btn-hero-back-link">← Back to Home</a>
+        <a class="page-hero-back" href="./" id="btn-hero-back-link">← Back to Home</a>
         <div class="page-hero-body" id="about-hero-body">
           <div class="page-hero-text" id="about-hero-text-block">
             <div class="page-hero-tag" id="tag-about-hero">About Us</div>
@@ -86,29 +86,75 @@
     <!-- Leadership Section -->
     <section class="about-leadership" id="section-about-leadership">
       <div class="container" id="about-leadership-container-block">
-        <div class="leadership-grid" id="about-leadership-layout-grid">
+        
+        <div class="text-center" data-aos="fade-up" id="leadership-header-block">
+          <span class="section-tag" id="tag-leadership-section">Leadership</span>
+          <h2 class="section-title" id="title-leadership-section">Our Leadership Team</h2>
+          <p class="section-desc" id="desc-leadership-section">
+            The operational expertise driving 4F Integrated Facility Services.
+          </p>
+        </div>
+
+        <div class="about-leaders-grid" id="about-leaders-grid-container">
           
-          <!-- Image column -->
-          <div class="leadership-image-wrap" data-aos="fade-right" id="block-leader-image">
-            <img src="assets/images/about_leadership.jpg" alt="Rajasekhar, Managing Partner of 4F Integrated Facility Services" id="img-leader-photo">
+          <!-- Leader Card 1: Rajasekhar -->
+          <div class="about-leader-card" data-aos="fade-up" data-aos-delay="100" id="card-leader-1">
+            <!-- Image column (Commented out - may be enabled later) -->
+            <!--
+            <div class="about-leader-image-wrap" id="block-leader-image-1">
+              <img src="assets/images/about_leadership.jpg" alt="Rajasekhar, Managing Partner of 4F Integrated Facility Services" id="img-leader-photo-1">
+            </div>
+            -->
+            
+            <div class="about-leader-header" id="header-leader-1">
+              <div class="about-leader-avatar" id="avatar-leader-1">R</div>
+              <div class="about-leader-info" id="info-leader-1">
+                <h3 id="name-leader-1">Rajasekhar</h3>
+                <div class="role" id="role-leader-1">Managing Partner</div>
+              </div>
+            </div>
+            
+            <div class="about-leader-content" id="content-leader-1">
+              <i class="fa-solid fa-quote-left quote-icon" id="quote-icon-leader-1"></i>
+              <p class="quote-text" id="quote-text-leader-1">
+                &quot;We don't just provide services, we provide peace of mind. Every detail of your facility, handled — so you can focus on what matters most.&quot;
+              </p>
+              <p class="desc-text" id="desc-bio-leader-1">
+                Rajasekhar leads 4F Integrated with a hands-on operations philosophy and a belief that trust is built one disciplined shift, one documented audit, and one quietly resolved issue at a time.
+              </p>
+            </div>
           </div>
 
-          <!-- Details column -->
-          <div class="leadership-details" data-aos="fade-left" id="block-leader-details">
-            <span class="section-tag" id="tag-leader-role">Leadership</span>
-            <h2 id="name-leader-title">Rajasekhar</h2>
-            <div class="title" id="role-leader-title">Managing Partner</div>
+          <!-- Leader Card 2: Kiran Kumar -->
+          <div class="about-leader-card" data-aos="fade-up" data-aos-delay="200" id="card-leader-2">
+            <!-- Image column (Commented out - may be enabled later) -->
+            <!--
+            <div class="about-leader-image-wrap" id="block-leader-image-2">
+              <img src="assets/images/about_leadership_2.jpg" alt="Kiran Kumar, Operations Director of 4F Integrated Facility Services" id="img-leader-photo-2">
+            </div>
+            -->
             
-            <i class="fa-solid fa-quote-left quote-icon" id="icon-leader-quote"></i>
-            <p class="quote-text" id="quote-leader-speech">
-              &quot;We don't just provide services, we provide peace of mind. Every detail of your facility, handled — so you can focus on what matters most.&quot;
-            </p>
-            <p class="desc-text" id="desc-leader-bio">
-              Rajasekhar leads 4F Integrated with a hands-on operations philosophy and a belief that trust is built one disciplined shift, one documented audit, and one quietly resolved issue at a time.
-            </p>
+            <div class="about-leader-header" id="header-leader-2">
+              <div class="about-leader-avatar" id="avatar-leader-2">K</div>
+              <div class="about-leader-info" id="info-leader-2">
+                <h3 id="name-leader-2">Kiran Kumar</h3>
+                <div class="role" id="role-leader-2">Operations Director</div>
+              </div>
+            </div>
+            
+            <div class="about-leader-content" id="content-leader-2">
+              <i class="fa-solid fa-quote-left quote-icon" id="quote-icon-leader-2"></i>
+              <p class="quote-text" id="quote-text-leader-2">
+                &quot;Operational excellence isn't about grand gestures; it's about the discipline of doing the small things right, every single day.&quot;
+              </p>
+              <p class="desc-text" id="desc-bio-leader-2">
+                Kiran oversees daily site operations and training programs, ensuring that our security, housekeeping, and maintenance teams execute their tasks with absolute precision and strict compliance.
+              </p>
+            </div>
           </div>
 
         </div>
+
       </div>
     </section>
 
@@ -153,7 +199,7 @@
           <p id="desc-about-cta-sub">Experience hazard-free facility management today.</p>
         </div>
         <a href="contact.html" class="btn btn-emerald btn-lg" id="btn-about-cta-contact">
-          Contact Us <i class="fa-solid fa-arrow-right" style="margin-left: var(--space-xxs);"></i>
+          Contact Us <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </section>

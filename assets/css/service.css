@@ -1,6 +1,6 @@
 /* Consolidated Service Details Layout */
 .service-overview-section {
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   padding: var(--section-padding);
 }
 
@@ -28,7 +28,7 @@
 .service-overview-image {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
 }
 
@@ -40,17 +40,23 @@
 
 /* Service Delivery Features Section */
 .service-delivery-section {
-  background-color: var(--color-bg-light);
+  background-color: var(--background);
   padding: var(--section-padding);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+#section-housekeeping-specialties,
+#section-deepcleaning-specialties {
+  border-top: none;
+  background-color: var(--card);
 }
 
 .delivery-card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--space-xl);
+  padding: var(--space-md);
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   display: flex;
@@ -63,12 +69,42 @@
   box-shadow: var(--shadow-lg);
 }
 
+.delivery-card-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--border);
+  transition: transform var(--transition-normal);
+}
+
+.delivery-card:hover .delivery-card-img {
+  transform: scale(1.02);
+}
+
+.delivery-card-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.delivery-card-header .delivery-icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+}
+
+.delivery-card-header .delivery-title {
+  margin-bottom: 0;
+}
+
 .delivery-icon {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald);
+  background-color: var(--secondary-soft);
+  color: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -84,19 +120,19 @@
 .delivery-title {
   font-size: var(--font-size-lg);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: var(--space-xs);
 }
 
 .delivery-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
 /* Service Auditing Checklist Section */
 .service-audit-section {
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   padding: var(--section-padding);
 }
 
@@ -122,8 +158,8 @@
 
 .service-checklist {
   list-style: none;
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
@@ -135,7 +171,7 @@
   gap: var(--space-md);
   padding-bottom: var(--space-md);
   margin-bottom: var(--space-md);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
 }
 
 .service-checklist-item:last-child {
@@ -148,8 +184,8 @@
   width: 28px;
   height: 28px;
   border-radius: var(--radius-circle);
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald);
+  background-color: var(--secondary-soft);
+  color: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -161,15 +197,15 @@
 .service-checklist-text {
   font-size: var(--font-size-sm);
   font-weight: var(--weight-medium);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   margin-top: 3px;
   line-height: var(--line-height-normal);
 }
 
 /* Service Generic Bottom CTA Block */
 .service-cta-banner {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   padding: var(--space-xl) 0;
 }
 
@@ -192,7 +228,7 @@
 .service-cta-banner h3 {
   font-size: var(--font-size-2xl);
   font-weight: var(--weight-bold);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 .service-cta-banner p {
@@ -203,10 +239,10 @@
 
 /* Service Hub Grid Item (Home services quicklinks) */
 .card-service {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   box-shadow: var(--shadow-sm);
   transition: transform var(--transition-normal), box-shadow var(--transition-normal);
   display: flex;
@@ -219,30 +255,63 @@
   box-shadow: var(--shadow-lg);
 }
 
+.card-service-img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-md);
+  border: 1px solid var(--border);
+  transition: transform var(--transition-normal);
+}
+
+.card-service:hover .card-service-img {
+  transform: scale(1.02);
+}
+
 .card-service-icon {
   width: 48px;
   height: 48px;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  color: var(--color-text-light);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
   box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.card-service-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xs);
+}
+
+.card-service-header .card-service-icon {
+  width: 40px; /* Slightly more compact for side-by-side header */
+  height: 40px;
+  font-size: 1.1rem;
 }
 
 .card-service-title {
   font-size: var(--font-size-base);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-top: var(--space-md);
   margin-bottom: var(--space-xs);
 }
 
+.card-service-header .card-service-title {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .card-service-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
   flex-grow: 1;
 }
@@ -253,10 +322,32 @@
   gap: var(--space-xxs);
   font-size: var(--font-size-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-top: var(--space-md);
 }
 
 .card-service:hover .card-service-link {
-  color: var(--color-accent);
+  color: var(--primary);
 }
+
+#btn-service-discuss {
+  margin-top: var(--space-md);
+}
+
+#btn-service-discuss i {
+  margin-left: var(--space-xxs);
+  font-size: 11px;
+}
+
+#btn-service-cta-contact i {
+  margin-left: var(--space-xxs);
+}
+
+#icon-delivery-equipment i {
+  font-size: 1.15rem;
+}
+
+.card-service-link i {
+  font-size: 11px;
+}
+

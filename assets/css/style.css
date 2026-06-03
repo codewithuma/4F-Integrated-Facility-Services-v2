@@ -6,74 +6,63 @@
 @import url("about.css");
 @import url("service.css");
 @import url("contact.css");
+@import url("quote.css");
 
 :root {
-  /* 1. OKLCH Color Palette (Exact tokens from original Lovable application) */
+  /* 1. Base Colors (Edit these to update the entire site theme) */
   --radius: 0.75rem;
-  --background: oklch(100% 0 0);
-  --foreground: oklch(18% 0.04 250);
-  --card: oklch(100% 0 0);
-  --card-foreground: oklch(18% 0.04 250);
-  --popover: oklch(100% 0 0);
-  --popover-foreground: oklch(18% 0.04 250);
+  --background: #ffffff;
   
-  --primary: oklch(24% 0.07 255);
-  --primary-foreground: oklch(98.5% 0.005 250);
-  --primary-glow: oklch(36% 0.1 258);
+  --primary: #041f3f;
+  --secondary: #008954;
+  --accent: #fa6e1d;
+
+  /* 2. Derived Shades (Automatically calculated in-browser from base colors) */
   
-  --secondary: oklch(55% 0.14 160);
-  --secondary-foreground: oklch(98.5% 0.005 250);
+  /* Derived from --primary */
+  --foreground: color-mix(in srgb, var(--primary) 60%, #000000);             /* Very dark navy text (#031222 equivalent) */
+  --primary-foreground: color-mix(in srgb, var(--primary) 4%, #ffffff);     /* Light blue tint (#f8fafd equivalent) */
+  --primary-glow: color-mix(in srgb, var(--primary) 80%, #ffffff);           /* Lighter glow navy (#173c70 equivalent) */
+  --background-dark: color-mix(in srgb, var(--primary) 25%, #000000);        /* Deep navy dark bg (#030d1e equivalent) */
+  --border-dark: color-mix(in srgb, var(--primary) 30%, #1e293b);            /* Dark navy border (#1c2f46 equivalent) */
   
-  --emerald: oklch(55% 0.14 160);
-  --emerald-soft: oklch(95% 0.04 160);
+  /* Derived from --secondary */
+  --secondary-soft: color-mix(in srgb, var(--secondary) 15%, #ffffff);       /* Soft green bg (#d9f7e5 equivalent) */
+  --secondary-dark: color-mix(in srgb, var(--secondary) 80%, #000000);       /* Rich dark green (#00683d equivalent) */
+
+  /* Derived from --foreground */
+  --muted-foreground: color-mix(in srgb, var(--foreground) 65%, #ffffff);    /* Slate grey text (#5c646f equivalent) */
   
-  --accent: oklch(70% 0.19 45);
-  --accent-foreground: oklch(98.5% 0.005 250);
+  /* Structure Mappings */
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
   
-  --muted: oklch(97% 0.005 250);
-  --muted-foreground: oklch(50% 0.02 255);
+  --secondary-foreground: var(--primary-foreground);
+  --accent-foreground: var(--primary-foreground);
   
-  --destructive: oklch(60% 0.22 27);
-  --destructive-foreground: oklch(98.5% 0.005 250);
+  --muted: color-mix(in srgb, var(--primary) 4%, #ffffff);                  /* Soft grey bg (#f3f5f8 equivalent) */
   
-  --border: oklch(92% 0.01 255);
-  --input: oklch(92% 0.01 255);
-  --ring: oklch(24% 0.07 255);
+  --destructive: #e62c2c;
+  --destructive-foreground: var(--primary-foreground);
+  
+  --border: color-mix(in srgb, var(--primary) 6%, #ffffff);                  /* Light grey-blue border (#e0e5eb equivalent) */
+  --input: var(--border);
+  --ring: var(--primary);
 
   /* Original Gradients */
-  --gradient-hero: linear-gradient(135deg, oklch(20% 0.07 255) 0%, oklch(30% 0.09 258) 55%, oklch(42% 0.12 200) 100%);
-  --gradient-emerald: linear-gradient(135deg, oklch(50% 0.13 160), oklch(62% 0.14 165));
-  --gradient-soft: linear-gradient(180deg, oklch(99% 0.005 250), oklch(96% 0.01 250));
-  --gradient-accent: linear-gradient(135deg, oklch(70% 0.19 45), oklch(62% 0.22 30));
+  --gradient-hero: linear-gradient(135deg, color-mix(in srgb, var(--primary) 15%, #000000) 0%, color-mix(in srgb, var(--primary) 60%, #000000) 55%, color-mix(in srgb, var(--primary) 50%, var(--secondary)) 100%);
+  --gradient-hero-overlay: linear-gradient(to right, var(--primary) 25%, color-mix(in srgb, var(--primary) 85%, transparent) 60%, color-mix(in srgb, var(--primary) 40%, transparent) 100%);
+  --gradient-emerald: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 90%, #000000), color-mix(in srgb, var(--secondary) 80%, #ffffff));
+  --gradient-soft: linear-gradient(180deg, color-mix(in srgb, var(--primary) 2%, #ffffff), color-mix(in srgb, var(--primary) 6%, #ffffff));
+  --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
+  --gradient-accent-glow: linear-gradient(135deg, var(--primary), var(--primary-glow));
 
   /* Glows and Smooth Transitions */
-  --shadow-glow: 0 0 50px oklch(55% 0.14 160 / 0.2);
+  --shadow-glow: 0 0 50px rgba(0, 137, 84, 0.2);
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* 2. Unified Semantic Color Mappings */
-  --color-primary: var(--primary);
-  --color-primary-light: var(--primary-glow);
-  --color-primary-dark: oklch(18% 0.05 255);
-  --color-primary-rgb: 24, 37, 84;
-  
-  --color-accent: var(--primary); /* Buttons default to navy primary */
-  --color-accent-hover: var(--primary-glow);
-  --color-accent-rgb: 41, 55, 107;
-  
-  --color-emerald: var(--emerald);
-  --color-emerald-light: var(--emerald-soft);
-  --color-emerald-dark: oklch(45% 0.12 160);
-  
-  --color-bg-light: var(--background);
-  --color-bg-dark: oklch(16% 0.04 255);
-  --color-bg-card: var(--card);
-  --color-bg-card-dark: oklch(16% 0.04 255);
-  --color-text-dark: var(--foreground);
-  --color-text-muted: var(--muted-foreground);
-  --color-text-light: var(--primary-foreground);
-  --color-border: var(--border);
-  --color-border-dark: oklch(30% 0.05 255);
-  
   /* Glassmorphism Settings */
   --glass-bg: rgba(255, 255, 255, 0.75);
   --glass-bg-dark: rgba(10, 15, 29, 0.8);
@@ -129,7 +118,7 @@
   --shadow-lg: 0 12px 32px rgba(8, 30, 68, 0.12);
   --shadow-xl: 0 24px 48px rgba(8, 30, 68, 0.18);
   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
-  --shadow-accent-glow: 0 8px 24px rgba(var(--color-accent-rgb), 0.25);
+  --shadow-accent-glow: 0 8px 24px color-mix(in srgb, var(--primary) 25%, transparent);
 
   /* 5. Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -155,8 +144,8 @@ body {
   font-family: var(--font-family-body);
   font-size: var(--font-size-base);
   line-height: var(--line-height-normal);
-  color: var(--color-text-dark);
-  background-color: var(--color-bg-light);
+  color: var(--foreground);
+  background-color: var(--background);
   overflow-x: hidden;
 }
 
@@ -203,7 +192,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-headings);
   font-weight: var(--weight-bold);
   line-height: var(--line-height-tight);
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 h1 { font-size: var(--font-size-4xl); }
@@ -212,7 +201,7 @@ h3 { font-size: var(--font-size-2xl); }
 h4 { font-size: var(--font-size-xl); }
 
 p {
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
@@ -225,7 +214,7 @@ p {
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-emerald);
+  color: var(--secondary);
   display: inline-block;
   margin-bottom: var(--space-xs);
 }
@@ -321,13 +310,13 @@ p {
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   box-shadow: 0 4px 12px rgba(8, 30, 68, 0.08); /* shadow-elegant */
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-light);
+  background-color: var(--primary-glow);
   box-shadow: 0 12px 32px rgba(8, 30, 68, 0.16); /* shadow-elevated */
   transform: translateY(-1px);
 }
@@ -337,13 +326,13 @@ p {
 }
 
 .btn-secondary {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
   box-shadow: 0 4px 12px rgba(8, 30, 68, 0.08);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-primary-light);
+  background-color: var(--primary-glow);
   box-shadow: 0 12px 32px rgba(8, 30, 68, 0.16);
   transform: translateY(-1px);
 }
@@ -353,19 +342,19 @@ p {
 }
 
 .btn-outline {
-  border: 1px solid var(--color-primary);
-  color: var(--color-primary);
+  border: 1px solid var(--primary);
+  color: var(--primary);
   background: transparent;
 }
 
 .btn-outline:hover {
-  background-color: var(--color-primary);
-  color: var(--color-text-light);
+  background-color: var(--primary);
+  color: var(--primary-foreground);
 }
 
 .btn-ghost-light {
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
@@ -383,8 +372,8 @@ p {
 
 /* Off-white Button inside dark contexts */
 .btn-primary-light {
-  background-color: var(--color-text-light);
-  color: var(--color-primary);
+  background-color: var(--primary-foreground);
+  color: var(--primary);
   box-shadow: 0 12px 32px rgba(8, 30, 68, 0.12); /* shadow-elevated */
   border: 1px solid transparent;
 }
@@ -402,7 +391,7 @@ p {
 /* Premium Emerald Green Button with Outer Glow */
 .btn-emerald {
   background: var(--gradient-emerald);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   box-shadow: var(--shadow-glow);
   border: none;
 }
@@ -435,11 +424,11 @@ p {
 
 /* Contextual Styling Framework */
 .dark-context {
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 .dark-context h1, .dark-context h2, .dark-context h3, .dark-context h4 {
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 .dark-context p {

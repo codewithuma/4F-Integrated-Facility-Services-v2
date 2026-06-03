@@ -1,6 +1,6 @@
 /* About History & Mission Grid */
 .about-story-section {
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   padding: var(--section-padding);
 }
 
@@ -28,10 +28,14 @@
 
 /* About Leadership Spotlight */
 .about-leadership {
-  background-color: var(--color-bg-light);
+  background-color: var(--background);
   padding: var(--section-padding);
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+#leadership-header-block {
+  margin-bottom: var(--space-xl);
 }
 
 .leadership-grid {
@@ -40,6 +44,7 @@
   gap: var(--space-xl);
 }
 
+/* Commented out desktop 2-column layout to allow full-width content (can be re-enabled later)
 @media (min-width: 1024px) {
   .leadership-grid {
     grid-template-columns: 5fr 7fr;
@@ -47,11 +52,12 @@
     gap: var(--space-xxl);
   }
 }
+*/
 
 .leadership-image-wrap {
   overflow: hidden;
   border-radius: var(--radius-lg);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--border);
   box-shadow: var(--shadow-lg);
 }
 
@@ -69,14 +75,14 @@
 .leadership-details h2 {
   font-size: var(--font-size-3xl);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: var(--space-xxs);
 }
 
 .leadership-details .title {
   font-size: var(--font-size-sm);
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   letter-spacing: 0.08em;
   font-weight: var(--weight-semibold);
   margin-bottom: var(--space-lg);
@@ -84,7 +90,7 @@
 
 .leadership-details i.quote-icon {
   font-size: 2rem;
-  color: var(--color-emerald);
+  color: var(--secondary);
   margin-bottom: var(--space-xs);
 }
 
@@ -93,18 +99,143 @@
   font-size: var(--font-size-xl);
   font-weight: var(--weight-semibold);
   line-height: var(--line-height-tight);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: var(--space-md);
 }
 
 .leadership-details .desc-text {
   font-size: var(--font-size-base);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
+}
+
+/* About Leadership Cards Grid */
+.about-leaders-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+@media (min-width: 768px) {
+  .about-leaders-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+}
+
+.about-leader-card {
+  background-color: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.about-leader-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.about-leader-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: var(--space-md);
+}
+
+.about-leader-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-circle);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-family-headings);
+  font-weight: var(--weight-bold);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.about-leader-card:nth-child(even) .about-leader-avatar {
+  background: var(--gradient-accent-glow);
+}
+
+.about-leader-info h3 {
+  font-size: var(--font-size-base);
+  font-weight: var(--weight-bold);
+  color: var(--primary);
+  margin-bottom: 2px;
+}
+
+.about-leader-info .role {
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  color: var(--muted-foreground);
+  letter-spacing: 0.05em;
+  font-weight: var(--weight-semibold);
+}
+
+.about-leader-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.about-leader-card i.quote-icon {
+  font-size: 1.5rem;
+  color: var(--secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.about-leader-card .quote-text {
+  font-family: var(--font-family-headings);
+  font-size: var(--font-size-md);
+  font-weight: var(--weight-semibold);
+  line-height: var(--line-height-tight);
+  color: var(--primary);
+  margin-bottom: var(--space-md);
+  font-style: italic;
+}
+
+.about-leader-card .desc-text {
+  font-size: var(--font-size-sm);
+  color: var(--muted-foreground);
+  line-height: var(--line-height-relaxed);
+  margin-top: auto; /* Push bio description to the bottom to align cards */
+}
+
+/* Fallback card banner image styling if enabled/uncommented later */
+.about-leader-image-wrap {
+  margin: calc(var(--space-xl) * -1) calc(var(--space-xl) * -1) var(--space-lg) calc(var(--space-xl) * -1);
+  overflow: hidden;
+  border-top-left-radius: calc(var(--radius-lg) - 1px);
+  border-top-right-radius: calc(var(--radius-lg) - 1px);
+  height: 220px;
+}
+
+.about-leader-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* About Difference Section */
 .about-difference {
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   padding: var(--section-padding);
 }
+
+#btn-about-cta-contact i {
+  margin-left: var(--space-xxs);
+}
+

@@ -14,7 +14,7 @@
 .header.sticky-scrolled {
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: var(--shadow-sm);
-  border-bottom-color: var(--color-border);
+  border-bottom-color: var(--border);
 }
 
 .header .container {
@@ -38,8 +38,8 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  color: var(--color-text-light);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
   font-family: var(--font-family-headings);
   font-weight: var(--weight-bold);
   font-size: 1.15rem;
@@ -54,7 +54,7 @@
   font-family: var(--font-family-headings);
   font-size: 1rem;
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 .header .logo-sub {
@@ -62,7 +62,7 @@
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
 }
 
 /* Navigation Links */
@@ -81,7 +81,7 @@
 .header .nav-link {
   font-size: var(--font-size-sm);
   font-weight: var(--weight-medium);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   opacity: 0.8;
   padding: var(--space-xxs) 0;
   border-bottom: 2px solid transparent;
@@ -89,7 +89,7 @@
 
 .header .nav-link:hover, .header .nav-link.active {
   opacity: 1;
-  color: var(--color-accent);
+  color: var(--primary);
 }
 
 /* Services Dropdown Selectors */
@@ -104,14 +104,14 @@
   cursor: pointer;
   font-size: var(--font-size-sm);
   font-weight: var(--weight-medium);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   opacity: 0.8;
   transition: opacity var(--transition-fast);
 }
 
 .header .dropdown-toggle:hover {
   opacity: 1;
-  color: var(--color-accent);
+  color: var(--primary);
 }
 
 .header .dropdown-menu {
@@ -120,8 +120,8 @@
   left: 50%;
   transform: translateX(-50%) translateY(10px);
   width: 220px;
-  background-color: var(--color-bg-light);
-  border: 1px solid var(--color-border);
+  background-color: var(--background);
+  border: 1px solid var(--border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   padding: var(--space-xs) 0;
@@ -142,13 +142,13 @@
   display: block;
   padding: var(--space-xs) var(--space-md);
   font-size: var(--font-size-sm);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   transition: background-color var(--transition-fast), color var(--transition-fast);
 }
 
 .header .dropdown-item:hover {
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald-dark);
+  background-color: var(--secondary-soft);
+  color: var(--secondary-dark);
   font-weight: var(--weight-medium);
 }
 
@@ -170,8 +170,8 @@
   padding: var(--space-xs);
   cursor: pointer;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
-  color: var(--color-primary);
+  border: 1px solid var(--border);
+  color: var(--primary);
   transition: background-color var(--transition-fast);
 }
 
@@ -188,3 +188,9 @@
     display: none;
   }
 }
+
+.header .dropdown-toggle i {
+  font-size: 10px;
+  margin-left: 2px;
+}
+

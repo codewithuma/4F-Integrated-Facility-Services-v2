@@ -1,5 +1,5 @@
 .contact-section {
-  background-color: var(--color-bg-light);
+  background-color: var(--background);
   padding: var(--section-padding);
 }
 
@@ -13,23 +13,17 @@
   .contact-grid {
     grid-template-columns: 8fr 4fr;
     align-items: flex-start;
-    gap: var(--space-xxl);
+    gap: var(--space-lg);
   }
 }
 
 /* Glassmorphic Contact Card Form */
 .contact-card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
-  padding: var(--space-lg);
+  padding: var(--space-md);
   box-shadow: var(--shadow-lg);
-}
-
-@media (min-width: 768px) {
-  .contact-card {
-    padding: var(--space-xl);
-  }
 }
 
 .contact-form {
@@ -69,24 +63,24 @@
 .form-control {
   width: 100%;
   border-radius: var(--radius-md);
-  border: 1px solid var(--color-border);
-  background-color: var(--color-bg-light);
+  border: 1px solid var(--border);
+  background-color: var(--background);
   padding: var(--space-sm) var(--space-md);
   font-size: var(--font-size-sm);
-  color: var(--color-text-dark);
+  color: var(--foreground);
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
 .form-control::placeholder {
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   opacity: 0.6;
 }
 
 .form-control:focus {
-  border-color: var(--color-accent);
+  border-color: var(--primary);
   outline: none;
-  box-shadow: 0 0 0 4px rgba(var(--color-accent-rgb), 0.12);
-  background-color: var(--color-bg-card);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 12%, transparent);
+  background-color: var(--card);
 }
 
 /* Textarea resizing overrides */
@@ -133,15 +127,15 @@ select.form-control {
 }
 
 .sidebar-card-accent {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
-  color: var(--color-text-light);
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
   border-radius: var(--radius-xl);
   padding: var(--space-lg);
   box-shadow: var(--shadow-lg);
 }
 
 .sidebar-card-accent h3 {
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   font-size: var(--font-size-lg);
   font-weight: var(--weight-bold);
   margin-bottom: var(--space-xs);
@@ -172,7 +166,7 @@ select.form-control {
   height: 36px;
   border-radius: var(--radius-sm);
   background-color: rgba(255, 255, 255, 0.1);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -195,8 +189,8 @@ select.form-control {
 }
 
 .sidebar-card-standard {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-lg);
   box-shadow: var(--shadow-sm);
@@ -205,13 +199,13 @@ select.form-control {
 .sidebar-card-standard h3 {
   font-size: var(--font-size-base);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: var(--space-xs);
 }
 
 .sidebar-card-standard p {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
 }
 
@@ -240,8 +234,8 @@ select.form-control {
 }
 
 .success-modal-card {
-  background-color: var(--color-bg-card);
-  border: 1px solid var(--color-border);
+  background-color: var(--card);
+  border: 1px solid var(--border);
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
   max-width: 420px;
@@ -260,8 +254,8 @@ select.form-control {
   width: 64px;
   height: 64px;
   border-radius: var(--radius-circle);
-  background-color: var(--color-emerald-light);
-  color: var(--color-emerald);
+  background-color: var(--secondary-soft);
+  color: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -272,13 +266,32 @@ select.form-control {
 .success-modal-title {
   font-size: var(--font-size-2xl);
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
   margin-bottom: var(--space-xs);
 }
 
 .success-modal-desc {
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   line-height: var(--line-height-relaxed);
   margin-bottom: var(--space-lg);
 }
+
+#btn-submit-contact {
+  width: auto;
+  align-self: flex-start;
+}
+
+#btn-submit-contact i {
+  margin-left: var(--space-xxs);
+  font-size: 11px;
+}
+
+.sidebar-contact-value a {
+  color: white;
+}
+
+#btn-success-modal-close {
+  width: 100%;
+}
+

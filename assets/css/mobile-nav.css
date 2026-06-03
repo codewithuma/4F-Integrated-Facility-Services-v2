@@ -24,7 +24,7 @@
   max-width: none;
   height: auto;
   min-height: 100dvh;
-  background-color: var(--color-bg-card);
+  background-color: var(--card);
   z-index: 2000;
   box-shadow: var(--shadow-xl);
   display: flex;
@@ -50,7 +50,7 @@
   align-items: center;
   justify-content: space-between;
   padding: var(--space-md) var(--space-lg);
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--border);
 }
 
 .offcanvas-menu .logo {
@@ -66,8 +66,8 @@
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-sm);
-  background: var(--color-primary);
-  color: var(--color-text-light);
+  background: var(--primary);
+  color: var(--primary-foreground);
   font-family: var(--font-family-headings);
   font-weight: var(--weight-bold);
   font-size: 1rem;
@@ -77,7 +77,7 @@
   font-family: var(--font-family-headings);
   font-size: 0.95rem;
   font-weight: var(--weight-bold);
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 .offcanvas-menu .logo-sub {
@@ -85,7 +85,7 @@
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
 }
 
 .offcanvas-close {
@@ -95,15 +95,15 @@
   width: 36px;
   height: 36px;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--color-border);
-  color: var(--color-text-muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
   cursor: pointer;
   transition: background-color var(--transition-fast);
 }
 
 .offcanvas-close:hover {
   background-color: rgba(0, 0, 0, 0.03);
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 /* Drawer Body (Navigation links) */
@@ -127,13 +127,13 @@
   font-family: var(--font-family-headings);
   font-size: var(--font-size-lg);
   font-weight: var(--weight-semibold);
-  color: var(--color-primary);
+  color: var(--primary);
   padding: var(--space-xxs) 0;
   border-bottom: 1px solid transparent;
 }
 
 .offcanvas-link:hover, .offcanvas-link.active {
-  color: var(--color-accent);
+  color: var(--primary);
 }
 
 /* Services mobile submenu */
@@ -146,7 +146,7 @@
   font-family: var(--font-family-headings);
   font-size: var(--font-size-lg);
   font-weight: var(--weight-semibold);
-  color: var(--color-primary);
+  color: var(--primary);
   padding: var(--space-xxs) 0;
   cursor: pointer;
 }
@@ -159,7 +159,7 @@
   display: flex;
   flex-direction: column;
   gap: var(--space-xs);
-  border-left: 1px dashed var(--color-border);
+  border-left: 1px dashed var(--border);
   margin-left: var(--space-xxs);
 }
 
@@ -172,17 +172,17 @@
 .offcanvas-submenu-link {
   font-size: var(--font-size-sm);
   font-weight: var(--weight-medium);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
   padding: var(--space-xxs) 0;
 }
 
 .offcanvas-submenu-link:hover, .offcanvas-submenu-link.active {
-  color: var(--color-accent);
+  color: var(--primary);
 }
 
 /* Drawer Footer Quick Contacts */
 .offcanvas-contacts {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--border);
   padding-top: var(--space-md);
 }
 
@@ -192,11 +192,11 @@
   gap: var(--space-sm);
   margin-bottom: var(--space-sm);
   font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
+  color: var(--muted-foreground);
 }
 
 .offcanvas-contact-item i {
-  color: var(--color-emerald);
+  color: var(--secondary);
 }
 
 .offcanvas-actions {
@@ -206,3 +206,8 @@
 .offcanvas-actions .btn {
   width: 100%;
 }
+
+.offcanvas-submenu-toggle i {
+  font-size: 11px;
+}
+

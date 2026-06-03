@@ -25,9 +25,8 @@ Projects built with this framework must follow this modular directory hierarchy.
 │   │   └── style.css         # Global Stylesheet (Tokens, resets, buttons, shared layout)
 │   ├── images/               # Web-optimized assets (PNG, SVG, JPG, WebP)
 │   ├── js/
-│   │   ├── contact.js        # Contact page validation and submission logic
 │   │   ├── main.js           # Core site logic, component loading, carousel, header triggers
-│   │   └── quote.js          # Interactive Quote calculator and multi-step form logic
+│   │   └── quote.js          # Interactive Quote wizard and multi-step sheet submission logic
 │   └── video/                # Compressed video backgrounds and media assets
 ├── components/               # Modular HTML components (fetched dynamically by main.js)
 │   ├── footer.html           # Shared site footer block
@@ -145,28 +144,47 @@ Maintain the following standard design tokens inside `assets/css/style.css` `:ro
 
 ```css
 :root {
-  /* 1. Color Palette (HSL-based) */
-  --primary-hue: 220;                   /* Navy Base */
-  --secondary-hue: 205;                 /* Vibrant Electric Accent Blue */
+  /* 1. Base Colors (Edit these to update the entire site theme) */
+  --radius: 0.75rem;
+  --background: #ffffff;
   
-  --color-primary: hsl(var(--primary-hue), 80%, 15%);
-  --color-primary-light: hsl(var(--primary-hue), 75%, 28%);
-  --color-primary-dark: hsl(var(--primary-hue), 90%, 8%);
-  --color-primary-rgb: 8, 30, 68;
+  --primary: #041f3f;
+  --secondary: #008954;
+  --accent: #fa6e1d;
+
+  /* 2. Derived Shades (Automatically calculated in-browser from base colors) */
   
-  --color-accent: hsl(var(--secondary-hue), 90%, 50%);
-  --color-accent-hover: hsl(var(--secondary-hue), 95%, 42%);
-  --color-accent-rgb: 13, 140, 242;
+  /* Derived from --primary */
+  --foreground: color-mix(in srgb, var(--primary) 60%, #000000);
+  --primary-foreground: color-mix(in srgb, var(--primary) 4%, #ffffff);
+  --primary-glow: color-mix(in srgb, var(--primary) 80%, #ffffff);
+  --background-dark: color-mix(in srgb, var(--primary) 25%, #000000);
+  --border-dark: color-mix(in srgb, var(--primary) 30%, #1e293b);
   
-  --color-bg-light: #f8fafc;
-  --color-bg-dark: #0a0f1d;
-  --color-bg-card: #ffffff;
-  --color-bg-card-dark: #121829;
-  --color-text-dark: #0f172a;
-  --color-text-muted: #64748b;
-  --color-text-light: #f8fafc;
-  --color-border: #e2e8f0;
-  --color-border-dark: #1e293b;
+  /* Derived from --secondary */
+  --secondary-soft: color-mix(in srgb, var(--secondary) 15%, #ffffff);
+  --secondary-dark: color-mix(in srgb, var(--secondary) 80%, #000000);
+
+  /* Derived from --foreground */
+  --muted-foreground: color-mix(in srgb, var(--foreground) 65%, #ffffff);
+  
+  /* Structure Mappings */
+  --card: var(--background);
+  --card-foreground: var(--foreground);
+  --popover: var(--background);
+  --popover-foreground: var(--foreground);
+  
+  --secondary-foreground: var(--primary-foreground);
+  --accent-foreground: var(--primary-foreground);
+  
+  --muted: color-mix(in srgb, var(--primary) 4%, #ffffff);
+  
+  --destructive: #e62c2c;
+  --destructive-foreground: var(--primary-foreground);
+  
+  --border: color-mix(in srgb, var(--primary) 6%, #ffffff);
+  --input: var(--border);
+  --ring: var(--primary);
   
   /* Glassmorphism Settings */
   --glass-bg: rgba(255, 255, 255, 0.75);
@@ -223,7 +241,7 @@ Maintain the following standard design tokens inside `assets/css/style.css` `:ro
   --shadow-lg: 0 12px 32px rgba(8, 30, 68, 0.12);
   --shadow-xl: 0 24px 48px rgba(8, 30, 68, 0.18);
   --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.06);
-  --shadow-accent-glow: 0 8px 24px rgba(var(--color-accent-rgb), 0.25);
+  --shadow-accent-glow: 0 8px 24px color-mix(in srgb, var(--primary) 25%, transparent);
 
   /* 5. Transitions */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -236,10 +254,10 @@ Maintain the following standard design tokens inside `assets/css/style.css` `:ro
 - Use `.dark-context` to invert text styles on dark panels (e.g. inside the `.hero` or `.cta-banner`).
   ```css
   .dark-context {
-    color: var(--color-text-light);
+    color: var(--primary-foreground);
   }
   .dark-context h1, .dark-context h2, .dark-context h3 {
-    color: var(--color-text-light);
+    color: var(--primary-foreground);
   }
   .dark-context p {
     color: rgba(248, 250, 252, 0.7);

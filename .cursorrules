@@ -1,0 +1,25 @@
+# AI Coding Assistant Rules & Constraints
+
+This file defines critical rules and bounds for AI models and coding agents operating in this repository.
+
+## 1. Reference Code Isolation (CRITICAL)
+- **Strictly Read-Only**: The `reference-code/` directory and all its contents (e.g., `reference-code/4F/`) are strictly read-only.
+- **NO MODIFICATIONS**: Under no circumstances should any AI assistant create, modify, rename, or delete files inside the `reference-code/` directory.
+- **Reference Only**: Use files inside `reference-code/` purely for inspiration, pattern checking, structure reference, and design consistency. All active changes must be written solely in the root project space.
+
+## 2. Workspace Bounds (CRITICAL)
+- **Do Not Search Outside Workspace**: Always restrict search queries, tool executions, file analysis, and command runs to the active workspace directory (`c:\Users\ajaym\Documents\websites\client\Integrated Facility Management`).
+- **No Global System Scans**: Never attempt to scan directories or files outside this project path. Keep all files, caches, scratch files, and output contents strictly inside the workspace.
+
+## 3. Technology Stack & Guidelines
+- **Core Stack**: Pure semantic HTML5 markup, Vanilla CSS for maximum flexibility, and clean modular Javascript.
+- **Styling**:
+  - Avoid inline styles. All CSS styling must reside in external stylesheets located inside the `/assets/css/` directory.
+  - Avoid using CSS frameworks like TailwindCSS unless specifically asked.
+- **Components**:
+  - HTML layout templates (header, mobile-nav, footer, page-hero) are served dynamically via AJAX fetches (`main.js` component loader) from the `/components/` folder.
+  - Do not hardcode redundant component markup inside `.js` template fallbacks. The `/components/*.html` partials are the single source of truth.
+- **Media & Assets**: Use verified relative paths. For subpages (inside `services/`), paths must be dynamically resolved or adjusted correctly using prefixes.
+- **Accessibility & Quality**:
+  - Use semantic headers (exactly one `<h1>` per page).
+  - Assign unique ID attributes to interactive fields and forms for QA testing and browser automation tools.

@@ -1,7 +1,7 @@
 .page-hero {
   position: relative;
   background: var(--gradient-hero);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   overflow: hidden;
   padding: var(--space-xl) 0 var(--space-xxl) 0;
   display: flex;
@@ -33,7 +33,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to right, var(--color-primary) 20%, rgba(var(--color-primary-rgb), 0.85) 60%, rgba(var(--color-primary-rgb), 0.4) 100%);
+  background: var(--gradient-hero-overlay);
   z-index: 2;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .page-hero-back:hover {
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 /* Breadcrumbs Lists */
@@ -78,7 +78,7 @@
 }
 
 .page-hero-breadcrumbs a:hover {
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
 }
 
 .page-hero-breadcrumbs span {
@@ -98,7 +98,7 @@
 .page-hero-title {
   font-size: clamp(2rem, 1.6rem + 2vw, 3.5rem);
   font-weight: var(--weight-bold);
-  color: var(--color-text-light);
+  color: var(--primary-foreground);
   line-height: var(--line-height-tight);
   letter-spacing: -0.03em;
   max-width: 800px;
@@ -154,7 +154,7 @@
     align-items: center;
     justify-content: center;
     font-size: 1.75rem;
-    color: var(--color-text-light);
+    color: var(--primary-foreground);
     flex-shrink: 0;
     margin-top: 4px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -168,8 +168,8 @@
 
 /* High-Contrast Premium CTA Button in Dark Navy Context */
 .btn-hero-quote {
-  background-color: var(--color-text-light);
-  color: var(--color-primary);
+  background-color: var(--primary-foreground);
+  color: var(--primary);
   box-shadow: 0 12px 32px rgba(8, 30, 68, 0.12); /* shadow-elevated */
   border-radius: 9999px; /* Force pill shape matching Tailwind rounded-full exactly */
   padding: 0.75rem 1.25rem; /* Standard px-5 py-3 padding matching Tailwind */
@@ -187,9 +187,15 @@
   transform: scale(1.02);
   background-color: rgba(255, 255, 255, 0.95);
   box-shadow: 0 16px 36px rgba(8, 30, 68, 0.16);
-  color: var(--color-primary);
+  color: var(--primary);
 }
 
 .btn-hero-quote:active {
   transform: scale(0.98);
 }
+
+.btn-hero-quote i {
+  margin-left: var(--space-xxs);
+  font-size: 11px;
+}
+
