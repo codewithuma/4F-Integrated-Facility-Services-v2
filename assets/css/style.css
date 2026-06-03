@@ -137,7 +137,7 @@
 html {
   scroll-behavior: smooth;
   text-size-adjust: 100%;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body {
@@ -146,7 +146,7 @@ body {
   line-height: var(--line-height-normal);
   color: var(--foreground);
   background-color: var(--background);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 body.overflow-hidden {
