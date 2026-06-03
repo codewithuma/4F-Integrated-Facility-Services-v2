@@ -161,10 +161,9 @@ Maintain the following standard design tokens inside `assets/css/style.css` `:ro
   --background-dark: color-mix(in srgb, var(--primary) 25%, #000000);
   --border-dark: color-mix(in srgb, var(--primary) 30%, #1e293b);
   
-  /* Derived from --secondary (Emerald) */
-  --emerald: var(--secondary);
-  --emerald-soft: color-mix(in srgb, var(--emerald) 15%, #ffffff);
-  --emerald-dark: color-mix(in srgb, var(--emerald) 80%, #000000);
+  /* Derived from --secondary */
+  --secondary-soft: color-mix(in srgb, var(--secondary) 15%, #ffffff);
+  --secondary-dark: color-mix(in srgb, var(--secondary) 80%, #000000);
 
   /* Derived from --foreground */
   --muted-foreground: color-mix(in srgb, var(--foreground) 65%, #ffffff);

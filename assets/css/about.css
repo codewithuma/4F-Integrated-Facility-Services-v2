@@ -90,7 +90,7 @@
 
 .leadership-details i.quote-icon {
   font-size: 2rem;
-  color: var(--emerald);
+  color: var(--secondary);
   margin-bottom: var(--space-xs);
 }
 
@@ -193,7 +193,7 @@
 
 .about-leader-card i.quote-icon {
   font-size: 1.5rem;
-  color: var(--emerald);
+  color: var(--secondary);
   margin-bottom: var(--space-xs);
 }
 

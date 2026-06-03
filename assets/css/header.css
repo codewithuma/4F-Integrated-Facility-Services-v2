@@ -147,8 +147,8 @@
 }
 
 .header .dropdown-item:hover {
-  background-color: var(--emerald-soft);
-  color: var(--emerald-dark);
+  background-color: var(--secondary-soft);
+  color: var(--secondary-dark);
   font-weight: var(--weight-medium);
 }
 

@@ -26,10 +26,9 @@
   --background-dark: color-mix(in srgb, var(--primary) 25%, #000000);        /* Deep navy dark bg (#030d1e equivalent) */
   --border-dark: color-mix(in srgb, var(--primary) 30%, #1e293b);            /* Dark navy border (#1c2f46 equivalent) */
   
-  /* Derived from --secondary (Emerald) */
-  --emerald: var(--secondary);
-  --emerald-soft: color-mix(in srgb, var(--emerald) 15%, #ffffff);           /* Soft green bg (#d9f7e5 equivalent) */
-  --emerald-dark: color-mix(in srgb, var(--emerald) 80%, #000000);           /* Rich dark green (#00683d equivalent) */
+  /* Derived from --secondary */
+  --secondary-soft: color-mix(in srgb, var(--secondary) 15%, #ffffff);       /* Soft green bg (#d9f7e5 equivalent) */
+  --secondary-dark: color-mix(in srgb, var(--secondary) 80%, #000000);       /* Rich dark green (#00683d equivalent) */
 
   /* Derived from --foreground */
   --muted-foreground: color-mix(in srgb, var(--foreground) 65%, #ffffff);    /* Slate grey text (#5c646f equivalent) */
@@ -57,7 +56,6 @@
   --gradient-hero-overlay: linear-gradient(to right, var(--primary) 25%, color-mix(in srgb, var(--primary) 85%, transparent) 60%, color-mix(in srgb, var(--primary) 40%, transparent) 100%);
   --gradient-emerald: linear-gradient(135deg, color-mix(in srgb, var(--secondary) 90%, #000000), color-mix(in srgb, var(--secondary) 80%, #ffffff));
   --gradient-soft: linear-gradient(180deg, color-mix(in srgb, var(--primary) 2%, #ffffff), color-mix(in srgb, var(--primary) 6%, #ffffff));
-  --gradient-accent: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 80%, #ff0000));
   --gradient-primary: linear-gradient(135deg, var(--primary), var(--primary-glow));
   --gradient-accent-glow: linear-gradient(135deg, var(--primary), var(--primary-glow));
 
@@ -216,7 +214,7 @@ p {
   font-weight: var(--weight-bold);
   text-transform: uppercase;
   letter-spacing: 0.15em;
-  color: var(--emerald);
+  color: var(--secondary);
   display: inline-block;
   margin-bottom: var(--space-xs);
 }

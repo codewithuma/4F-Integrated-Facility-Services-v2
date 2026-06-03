@@ -254,8 +254,8 @@ select.form-control {
   width: 64px;
   height: 64px;
   border-radius: var(--radius-circle);
-  background-color: var(--emerald-soft);
-  color: var(--emerald);
+  background-color: var(--secondary-soft);
+  color: var(--secondary);
   display: flex;
   align-items: center;
   justify-content: center;
