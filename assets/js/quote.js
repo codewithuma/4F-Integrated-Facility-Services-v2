@@ -14,6 +14,128 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let currentStep = 0;
 
+  // Configuration mapping from Step 1 service values to Step 2 facility details (Option A)
+  const SERVICE_FACILITY_MAPPING = {
+    'fire-extinguishers': [
+      { value: 'manufacturing', title: 'Manufacturing Units', desc: 'Factories, production lines, and industrial processing zones.' },
+      { value: 'sez', title: 'Special Economic Zone (SEZ)', desc: 'High-compliance corporate enclaves and tech parks.' },
+      { value: 'pharma', title: 'Pharma Companies', desc: 'Cleanrooms, labs, and specialized pharmaceutical manufacturing.' },
+      { value: 'all-companies', title: 'All Type Companies', desc: 'General corporate offices, retail outlets, and warehouses.' }
+    ],
+    'fire-amc': [
+      { value: 'manufacturing', title: 'Manufacturing Units', desc: 'Factories, production lines, and industrial processing zones.' },
+      { value: 'sez', title: 'Special Economic Zone (SEZ)', desc: 'High-compliance corporate enclaves and tech parks.' },
+      { value: 'pharma', title: 'Pharma Companies', desc: 'Cleanrooms, labs, and specialized pharmaceutical manufacturing.' },
+      { value: 'all-companies', title: 'All Type Companies', desc: 'General corporate offices, retail outlets, and warehouses.' }
+    ],
+    'fire-noc': [
+      { value: 'manufacturing', title: 'Manufacturing Units', desc: 'Factories, production lines, and industrial processing zones.' },
+      { value: 'sez', title: 'Special Economic Zone (SEZ)', desc: 'High-compliance corporate enclaves and tech parks.' },
+      { value: 'pharma', title: 'Pharma Companies', desc: 'Cleanrooms, labs, and specialized pharmaceutical manufacturing.' },
+      { value: 'all-companies', title: 'All Type Companies', desc: 'General corporate offices, retail outlets, and warehouses.' }
+    ],
+    'housekeeping': [
+      { value: 'residential-apartments', title: 'Residential Apartments & Villas', desc: 'Societies, gated developments, and luxury estates.' },
+      { value: 'schools', title: 'Schools & Educational Inst.', desc: 'Classrooms, campuses, libraries, and administrative blocks.' },
+      { value: 'hospitals', title: 'Hospitals & Healthcare', desc: 'Clinics, nursing homes, and clinical environments.' },
+      { value: 'front-offices', title: 'Front Offices / Reception', desc: 'Corporate lobbies, visitor areas, and front desks.' },
+      { value: 'shopping-malls', title: 'Shopping Malls & Retail', desc: 'Outlets, public walkways, and food courts.' }
+    ],
+    'deep-cleaning': [
+      { value: 'specialized-residential', title: 'Specialized Residential Houses', desc: 'Post-construction, move-in/out, and premium villas.' },
+      { value: 'commercial-offices', title: 'Commercial Offices & Workspaces', desc: 'Corporate floors, meeting rooms, and tech setups.' }
+    ],
+    'security': [
+      { value: 'gated-communities', title: 'Gated Communities', desc: 'Residential associations, villas, and housing estates.' },
+      { value: 'commercial-offices', title: 'Commercial Offices & Workspaces', desc: 'IT parks, business towers, and office entries.' },
+      { value: 'sez', title: 'Special Economic Zone (SEZ)', desc: 'Strict access control zones and secure perimeters.' },
+      { value: 'shopping-malls', title: 'Shopping Malls & Retail', desc: 'Crowd management, parking control, and loss prevention.' },
+      { value: 'in-person-security', title: 'In-Person Security Guard', desc: 'Trained security personnel and executive escorts.' }
+    ],
+    'pest-control': [
+      { value: 'hostels', title: 'Hostels & PG Accommodations', desc: 'Student dorms, hostels, and shared housing environments.' },
+      { value: 'restaurants', title: 'Restaurants & Dining', desc: 'Kitchens, dining areas, pantries, and food processing spaces.' },
+      { value: 'company-audits', title: 'Company Audits / Warehouses', desc: 'Audit-ready pest compliance for logistics and storage.' }
+    ],
+    'full-integrated': [
+      { value: 'gated-communities', title: 'Gated Communities', desc: 'Residential associations, villas, and housing estates.' },
+      { value: 'schools', title: 'Schools & Colleges', desc: 'Integrated management for academic campuses.' },
+      { value: 'restaurants', title: 'Restaurants & Cafeterias', desc: 'Comprehensive hygiene, pest, and cleaning care.' },
+      { value: 'hospitals', title: 'Hospitals & Medical Centers', desc: 'Highly regulated healthcare facility operations.' },
+      { value: 'premium-villas', title: 'Premium Gated Villas', desc: 'High-end residential concierge, cleaning, and security.' }
+    ]
+  };
+
+  // Render Step 2 checklist options dynamically based on Step 1 selection(s)
+  const updateDynamicFacilityOptions = () => {
+    const dynamicContainer = document.querySelector('#dynamic-facility-container');
+    if (!dynamicContainer) return;
+
+    // Capture currently checked values to preserve state if user goes back/forth
+    const previouslyChecked = new Set(
+      Array.from(dynamicContainer.querySelectorAll('input[name="facility-type"]:checked'))
+        .map(cb => cb.value)
+    );
+
+    // Get checked services from Step 1
+    const checkedServices = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+      .map(checkbox => checkbox.value);
+
+    // Compile unique options
+    const uniqueOptions = [];
+    const seenValues = new Set();
+
+    checkedServices.forEach(service => {
+      const options = SERVICE_FACILITY_MAPPING[service];
+      if (options) {
+        options.forEach(opt => {
+          if (!seenValues.has(opt.value)) {
+            seenValues.add(opt.value);
+            uniqueOptions.push(opt);
+          }
+        });
+      }
+    });
+
+    // Clear and build the dynamic options list
+    dynamicContainer.innerHTML = '';
+
+    if (uniqueOptions.length === 0) {
+      dynamicContainer.innerHTML = `
+        <div class="col-span-full text-center text-muted-foreground fs-13 py-md">
+          Please go back and select at least one service to see facility categories.
+        </div>`;
+      return;
+    }
+
+    uniqueOptions.forEach(opt => {
+      const isChecked = previouslyChecked.has(opt.value);
+      const card = document.createElement('div');
+      card.className = `checkbox-card${isChecked ? ' active' : ''}`;
+      
+      card.innerHTML = `
+        <input type="checkbox" name="facility-type" value="${opt.value}"${isChecked ? ' checked' : ''}>
+        <div class="checkbox-card-header">
+          <div class="checkbox-card-indicator"></div>
+          <span class="checkbox-card-title">${opt.title}</span>
+        </div>
+        <span class="checkbox-card-desc">${opt.desc}</span>
+      `;
+
+      // Interactive click behavior for the card
+      const checkbox = card.querySelector('input[type="checkbox"]');
+      card.addEventListener('click', (e) => {
+        if (e.target !== checkbox) {
+          checkbox.checked = !checkbox.checked;
+        }
+        card.classList.toggle('active', checkbox.checked);
+        validateStep(1); // Re-validate Step 2 instantly
+      });
+
+      dynamicContainer.appendChild(card);
+    });
+  };
+
   // Range Slider Value dynamic indicator
   const rangeSlider = document.querySelector('#facility-size');
   const rangeValueText = document.querySelector('#facility-size-value');
@@ -196,8 +318,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Compile facility profile
     const facilitySizeVal = rangeSlider ? rangeSlider.value : '0';
-    const checkedType = document.querySelector('input[name="facility-type"]:checked');
-    const facilityTypeName = checkedType ? checkedType.closest('.checkbox-card').querySelector('.checkbox-card-title').textContent.trim() : 'N/A';
+    const checkedTypes = Array.from(document.querySelectorAll('input[name="facility-type"]:checked'))
+      .map(checkbox => checkbox.closest('.checkbox-card').querySelector('.checkbox-card-title').textContent.trim());
+    const facilityTypeName = checkedTypes.length > 0 ? checkedTypes.join(', ') : 'N/A';
     
     if (summaryFacility) {
       summaryFacility.textContent = `${facilityTypeName} (${parseInt(facilitySizeVal).toLocaleString()} Sq. Ft.)`;
@@ -220,6 +343,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (validateStep(currentStep)) {
       if (currentStep < steps.length - 1) {
         currentStep++;
+        
+        // Render dynamic facility categories if entering step 2
+        if (currentStep === 1) {
+          updateDynamicFacilityOptions();
+        }
+
         updateStepperLayout();
         
         // Compile summary data before displaying final validation screen
@@ -258,8 +387,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Gather facility details
     const facilitySizeVal = rangeSlider ? rangeSlider.value : '0';
-    const checkedType = document.querySelector('input[name="facility-type"]:checked');
-    const facilityTypeName = checkedType ? checkedType.closest('.checkbox-card').querySelector('.checkbox-card-title').textContent.trim() : 'N/A';
+    const checkedTypes = Array.from(document.querySelectorAll('input[name="facility-type"]:checked'))
+      .map(checkbox => checkbox.closest('.checkbox-card').querySelector('.checkbox-card-title').textContent.trim());
+    const facilityTypeName = checkedTypes.length > 0 ? checkedTypes.join(', ') : 'N/A';
 
     // Gather contact info
     const nameVal = document.querySelector('#contact-name').value;
