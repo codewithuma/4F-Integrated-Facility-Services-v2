@@ -473,6 +473,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // Navigation Button Handlers
   // ==========================================================================
+  const scrollToFormTop = () => {
+    const stepperProgress = document.querySelector('.stepper-progress');
+    if (stepperProgress) {
+      stepperProgress.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   nextBtn.addEventListener('click', () => {
     if (validateStep(currentStep, true)) {
       if (currentStep < steps.length - 1) {
@@ -484,6 +491,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         updateStepperLayout();
+        scrollToFormTop();
         
         // Compile summary data before displaying final validation screen
         if (currentStep === 3) {
@@ -500,6 +508,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentStep > 0) {
       currentStep--;
       updateStepperLayout();
+      scrollToFormTop();
     }
   });
 

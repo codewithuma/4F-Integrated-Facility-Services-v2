@@ -9,6 +9,7 @@
   position: relative;
   max-width: 600px;
   margin: 0 auto var(--space-xl) auto;
+  scroll-margin-top: 100px;
 }
 
 .stepper-progress::after {
