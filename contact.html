@@ -186,6 +186,9 @@
                         <span>100,000+ Sq. Ft.</span>
                       </div>
                     </div>
+
+                    <!-- Placeholder for dynamic conditional questions -->
+                    <div id="dynamic-questions-container" class="form-group init-hidden"></div>
                   </div>
 
                   <!-- STEP 3: Contact & Spec details -->
@@ -223,8 +226,9 @@
                     
                     <!-- Message Box -->
                     <div class="form-group">
-                      <label class="form-label" for="contact-msg">Tell us about your specific facility challenges (optional)</label>
-                      <textarea class="form-control h-100px-no-resize" id="contact-msg" placeholder="Tell us about your facility and what you're looking for..."></textarea>
+                      <label class="form-label" for="contact-msg">Tell us about your specific facility challenges *</label>
+                      <textarea class="form-control h-100px-no-resize" id="contact-msg" placeholder="Tell us about your facility and what you're looking for..." required></textarea>
+                      <div class="invalid-feedback">Message is required.</div>
                     </div>
                   </div>
 
@@ -244,6 +248,10 @@
                         <div class="summary-item">
                           <span>Facility profile:</span>
                           <strong id="summary-facility">Commercial Offices (15,000 Sq. Ft.)</strong>
+                        </div>
+                        <div id="summary-fire-noc-item" class="summary-item init-hidden">
+                          <span>Fire NOC Details:</span>
+                          <strong id="summary-fire-noc">Arch: N/A, Proposal: N/A</strong>
                         </div>
                         <div class="summary-item">
                           <span>Contact Info:</span>

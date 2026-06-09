@@ -23,3 +23,6 @@ This file defines critical rules and bounds for AI models and coding agents oper
 - **Accessibility & Quality**:
   - Use semantic headers (exactly one `<h1>` per page).
   - Assign unique ID attributes to interactive fields and forms for QA testing and browser automation tools.
+
+## 4. Browser Verification Constraint
+- **CRITICAL - No Automatic Browser Checks**: DO NOT call the `browser_subagent` tool or open local files/URLs in a browser under any circumstances, unless the user explicitly types a direct instruction asking you to check using the browser in that specific turn. Never perform browser-based verification automatically or by default. Validate logic programmatically or manually describe validation steps instead.

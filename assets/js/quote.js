@@ -32,7 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
       { value: 'manufacturing', title: 'Manufacturing Units', desc: 'Factories, production lines, and industrial processing zones.' },
       { value: 'sez', title: 'Special Economic Zone (SEZ)', desc: 'High-compliance corporate enclaves and tech parks.' },
       { value: 'pharma', title: 'Pharma Companies', desc: 'Cleanrooms, labs, and specialized pharmaceutical manufacturing.' },
-      { value: 'all-companies', title: 'All Type Companies', desc: 'General corporate offices, retail outlets, and warehouses.' }
+      { value: 'all-companies', title: 'All Type Companies', desc: 'General corporate offices, retail outlets, and warehouses.' },
+      { value: 'fire-architecture', title: '1. Fire Architecture Available? *', desc: 'Please select if Fire Architecture is available.', isQuestion: true },
+      { value: 'proposal-available', title: '2. Proposal Available? *', desc: 'Please select if Proposal is available.', isQuestion: true }
     ],
     'housekeeping': [
       { value: 'residential-apartments', title: 'Residential Apartments & Villas', desc: 'Societies, gated developments, and luxury estates.' },
@@ -66,6 +68,94 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
+  // Render dynamic questionnaire fields under #dynamic-questions-container
+  const renderDynamicQuestions = (checkedServices) => {
+    const container = document.querySelector('#dynamic-questions-container');
+    if (!container) return;
+
+    // Capture currently checked values to preserve state if user goes back/forth
+    const savedValues = {};
+    container.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+      savedValues[radio.name] = radio.value;
+    });
+
+    container.innerHTML = '';
+    
+    // Find all questions for active services
+    const activeQuestions = [];
+    checkedServices.forEach(service => {
+      const options = SERVICE_FACILITY_MAPPING[service];
+      if (options) {
+        options.forEach(opt => {
+          if (opt.isQuestion) {
+            activeQuestions.push({
+              id: opt.value,
+              label: opt.title,
+              errorMsg: opt.desc
+            });
+          }
+        });
+      }
+    });
+
+    if (activeQuestions.length === 0) {
+      container.classList.add('init-hidden');
+      return;
+    }
+
+    container.classList.remove('init-hidden');
+
+    // Create header label
+    const headerLabel = document.createElement('label');
+    headerLabel.className = 'form-label text-primary font-bold';
+    const isFireNocOnly = checkedServices.includes('fire-noc') && activeQuestions.length === 2;
+    headerLabel.textContent = isFireNocOnly ? 'Fire NOC Consultation Details' : 'Additional Service Details';
+    container.appendChild(headerLabel);
+
+    // Create a grid container for the questions
+    const grid = document.createElement('div');
+    grid.className = 'grid grid-2 gap-sm';
+    container.appendChild(grid);
+
+    activeQuestions.forEach(q => {
+      const qGroup = document.createElement('div');
+      qGroup.className = 'form-group dynamic-question-group';
+      qGroup.dataset.questionId = q.id;
+
+      const savedVal = savedValues[q.id] || '';
+
+      qGroup.innerHTML = `
+        <span class="form-label fs-13 mb-xs block question-label">${q.label}</span>
+        <div class="radio-button-container">
+          <div class="radio-button">
+            <input type="radio" class="radio-button__input" id="${q.id}-yes" name="${q.id}" value="Yes"${savedVal === 'Yes' ? ' checked' : ''}>
+            <label class="radio-button__label" for="${q.id}-yes">
+              <span class="radio-button__custom"></span>
+              Yes
+            </label>
+          </div>
+          <div class="radio-button">
+            <input type="radio" class="radio-button__input" id="${q.id}-no" name="${q.id}" value="No"${savedVal === 'No' ? ' checked' : ''}>
+            <label class="radio-button__label" for="${q.id}-no">
+              <span class="radio-button__custom"></span>
+              No
+            </label>
+          </div>
+        </div>
+        <div class="invalid-feedback" id="${q.id}-feedback">${q.errorMsg}</div>
+      `;
+
+      // Attach instant validation handler on click
+      qGroup.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', () => {
+          validateStep(1); // Re-validate step 2 instantly
+        });
+      });
+
+      grid.appendChild(qGroup);
+    });
+  };
+
   // Render Step 2 checklist options dynamically based on Step 1 selection(s)
   const updateDynamicFacilityOptions = () => {
     const dynamicContainer = document.querySelector('#dynamic-facility-container');
@@ -81,6 +171,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkedServices = Array.from(document.querySelectorAll('input[name="services"]:checked'))
       .map(checkbox => checkbox.value);
 
+    // Render dynamic questions based on selected services
+    renderDynamicQuestions(checkedServices);
+
     // Compile unique options
     const uniqueOptions = [];
     const seenValues = new Set();
@@ -89,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const options = SERVICE_FACILITY_MAPPING[service];
       if (options) {
         options.forEach(opt => {
-          if (!seenValues.has(opt.value)) {
+          if (!opt.isQuestion && !seenValues.has(opt.value)) {
             seenValues.add(opt.value);
             uniqueOptions.push(opt);
           }
@@ -223,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   // Validations per Wizard Step
   // ==========================================================================
-  const validateStep = (stepIndex) => {
+  const validateStep = (stepIndex, showErrors = false) => {
     let isValid = true;
     const stepContainer = steps[stepIndex];
 
@@ -234,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (checkedServices.length === 0) {
         isValid = false;
-        if (errorMsg) errorMsg.style.display = 'block';
+        if (showErrors && errorMsg) errorMsg.style.display = 'block';
       } else {
         if (errorMsg) errorMsg.style.display = 'none';
       }
@@ -246,21 +339,37 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (!checkedType) {
         isValid = false;
-        if (errorMsg) errorMsg.style.display = 'block';
+        if (showErrors && errorMsg) errorMsg.style.display = 'block';
       } else {
         if (errorMsg) errorMsg.style.display = 'none';
       }
+
+      // Validate all dynamically rendered questionnaire fields
+      const activeQuestions = stepContainer.querySelectorAll('#dynamic-questions-container .dynamic-question-group');
+      activeQuestions.forEach(qGroup => {
+        const qId = qGroup.dataset.questionId;
+        const checked = qGroup.querySelector(`input[name="${qId}"]:checked`);
+        const feedback = qGroup.querySelector(`#${qId}-feedback`);
+        if (!checked) {
+          isValid = false;
+          if (showErrors && feedback) feedback.style.display = 'block';
+        } else {
+          if (feedback) feedback.style.display = 'none';
+        }
+      });
     } 
+
     else if (stepIndex === 2) {
-      // Step 3: Contact details fields (Mandatory fields: Name, Email, Phone)
+      // Step 3: Contact details fields (Mandatory fields: Name, Email, Phone, Message)
       const nameInput = document.querySelector('#contact-name');
       const emailInput = document.querySelector('#contact-email');
       const phoneInput = document.querySelector('#contact-phone');
+      const msgInput = document.querySelector('#contact-msg');
 
       // Name validation
       if (!nameInput.value.trim()) {
-        nameInput.classList.add('is-invalid');
         isValid = false;
+        if (showErrors) nameInput.classList.add('is-invalid');
       } else {
         nameInput.classList.remove('is-invalid');
       }
@@ -268,8 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Email validation
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!emailInput.value.trim() || !emailRegex.test(emailInput.value)) {
-        emailInput.classList.add('is-invalid');
         isValid = false;
+        if (showErrors) emailInput.classList.add('is-invalid');
       } else {
         emailInput.classList.remove('is-invalid');
       }
@@ -277,10 +386,18 @@ document.addEventListener('DOMContentLoaded', () => {
       // Phone validation (numbers 10-15 digits)
       const phoneRegex = /^[0-9+() -]{10,15}$/;
       if (!phoneInput.value.trim() || !phoneRegex.test(phoneInput.value)) {
-        phoneInput.classList.add('is-invalid');
         isValid = false;
+        if (showErrors) phoneInput.classList.add('is-invalid');
       } else {
         phoneInput.classList.remove('is-invalid');
+      }
+
+      // Message validation
+      if (!msgInput.value.trim()) {
+        isValid = false;
+        if (showErrors) msgInput.classList.add('is-invalid');
+      } else {
+        msgInput.classList.remove('is-invalid');
       }
     }
 
@@ -288,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Attach real-time validation triggers on input loss
-  const contactInputs = document.querySelectorAll('#contact-name, #contact-email, #contact-phone');
+  const contactInputs = document.querySelectorAll('#contact-name, #contact-email, #contact-phone, #contact-msg');
   contactInputs.forEach(input => {
     input.addEventListener('blur', () => {
       validateStep(2);
@@ -326,6 +443,23 @@ document.addEventListener('DOMContentLoaded', () => {
       summaryFacility.textContent = `${facilityTypeName} (${parseInt(facilitySizeVal).toLocaleString()} Sq. Ft.)`;
     }
 
+    // Compile dynamic questionnaire answers
+    const summaryFireNocItem = document.querySelector('#summary-fire-noc-item');
+    if (summaryFireNocItem) {
+      const activeQuestions = document.querySelectorAll('#dynamic-questions-container .dynamic-question-group');
+      summaryFireNocItem.classList.toggle('init-hidden', activeQuestions.length === 0);
+      if (activeQuestions.length > 0) {
+        const details = Array.from(activeQuestions).map(qGroup => {
+          const qId = qGroup.dataset.questionId;
+          const label = qId.replace('fire-', '').replace('-available', ''); // 'fire-architecture' -> 'architecture', 'proposal-available' -> 'proposal'
+          const capLabel = label.charAt(0).toUpperCase() + label.slice(1);
+          const val = qGroup.querySelector(`input[name="${qId}"]:checked`)?.value || 'N/A';
+          return `${capLabel}: ${val}`;
+        });
+        document.querySelector('#summary-fire-noc').textContent = details.join(', ');
+      }
+    }
+
     // Compile contact profiles
     const nameVal = document.querySelector('#contact-name').value;
     const emailVal = document.querySelector('#contact-email').value;
@@ -340,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Navigation Button Handlers
   // ==========================================================================
   nextBtn.addEventListener('click', () => {
-    if (validateStep(currentStep)) {
+    if (validateStep(currentStep, true)) {
       if (currentStep < steps.length - 1) {
         currentStep++;
         
@@ -398,6 +532,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneVal = document.querySelector('#contact-phone').value;
     const msgVal = document.querySelector('#contact-msg').value || '';
 
+    // Check if Fire NOC is selected
+    const isFireNocSelected = Array.from(document.querySelectorAll('input[name="services"]:checked'))
+      .some(cb => cb.value === 'fire-noc');
+    
+    const fireArchitecture = isFireNocSelected ? (document.querySelector('input[name="fire-architecture"]:checked')?.value || '') : '';
+    const proposalAvailable = isFireNocSelected ? (document.querySelector('input[name="proposal-available"]:checked')?.value || '') : '';
+
     // Prepare parameters for Google Apps Script parameter parsing
     const params = new URLSearchParams();
     params.append('ticketId', ticketIdVal);
@@ -409,6 +550,8 @@ document.addEventListener('DOMContentLoaded', () => {
     params.append('email', emailVal);
     params.append('phone', phoneVal);
     params.append('message', msgVal);
+    params.append('fireArchitecture', fireArchitecture);
+    params.append('proposalAvailable', proposalAvailable);
 
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbw0EXgejX49qHe4sSVuoEFZIw_X3L4kXdtUzpzXq3KuE1web50nhW7O8bm8UmVH7HuV9A/exec';
 
