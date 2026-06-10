@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: http://4f-ifs.com/sitemap.xml
