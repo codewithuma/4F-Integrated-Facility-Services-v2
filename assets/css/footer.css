@@ -164,3 +164,34 @@
   margin-bottom: var(--space-lg);
 }
 
+/* Social Media Icons */
+.footer-social {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+.footer-social .social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-circle);
+  background-color: color-mix(in srgb, var(--bg-white) 8%, transparent);
+  border: 1px solid color-mix(in srgb, var(--text-white) 15%, transparent);
+  color: rgba(248, 250, 252, 0.7);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.footer-social .social-link:hover {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  color: var(--text-white);
+  transform: translateY(-2px);
+}
+
+.footer-social .social-link i {
+  font-size: 1.1rem;
+}
+

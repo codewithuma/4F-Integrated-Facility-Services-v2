@@ -289,9 +289,32 @@ select.form-control {
 
 .sidebar-contact-value a {
   color: var(--text-white);
+  transition: color var(--transition-fast);
+}
+
+.sidebar-contact-value a:hover {
+  color: var(--primary-foreground);
+  text-decoration: underline;
 }
 
 #btn-success-modal-close {
   width: 100%;
+}
+
+/* Map Container Sizing */
+#sidebar-item-map {
+  display: block;
+  width: 100%;
+}
+
+.sidebar-contact-map {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+/* Simple hover effect */
+.sidebar-contact-map:hover {
+  transform: scale(1.02);
 }
 
