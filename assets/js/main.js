@@ -263,7 +263,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     a.addEventListener('click', (e) => {
       e.preventDefault();
       const waMessage = encodeURIComponent("Hi 4F Integrated Facility Services, I would like to inquire about facility management services for my property.");
-      window.open(`https://wa.me/918886320444?text=${waMessage}`, '_blank', 'noopener,noreferrer');
+      window.open(`https://wa.me/917569042152?text=${waMessage}`, '_blank', 'noopener,noreferrer');
     });
   };
   injectWhatsappFloat();
